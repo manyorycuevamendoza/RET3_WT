@@ -1,11 +1,9 @@
-const CORRECT_CODE = '1234';
+const CORRECT_CODE = '4870';
 let currentScreen = 'screen-welcome';
-let enteredCode = '';
-let currentBoxIndex = 0;
 let callTimerInterval = null;
 let callSeconds = 0;
-let isProcessing = false;
 const pendingTimeouts = new Set();
+const advisorAudio = new Audio('assets/audio/clara-codigo-confianza.mp3');
 
 // Cancel pending scene actions whenever the viewer leaves that screen.
 function schedule(callback, delay) {
@@ -33,7 +31,7 @@ function showScreen(id) {
   currentScreen = id;
 }
 
-function navigateWithinBCP(id) {
+function navigateWithinBCP(id, onArrive) {
   const destinations = {
     'screen-bcp-home': 'Abriendo el inicio de BCP',
     'screen-code-entry': 'Abriendo Código Confianza',
@@ -41,7 +39,10 @@ function navigateWithinBCP(id) {
   if (!destinations[id] || currentScreen === id || currentScreen === 'screen-app-transition') return;
   document.getElementById('app-transition-label').textContent = destinations[id];
   showScreen('screen-app-transition');
-  schedule(() => showScreen(id), 1000);
+  schedule(() => {
+    showScreen(id);
+    if (onArrive) onArrive();
+  }, 1000);
 }
 
 function startDemo() {
@@ -96,6 +97,59 @@ function acceptCall() {
   }, 300);
 }
 
+function declineCall() {
+  vibrate(30);
+  showScreen('screen-call-declined');
+  schedule(() => startWhatsAppFlow(), 4200);
+}
+
+function startWhatsAppFlow() {
+  resetWhatsAppFlow();
+  showScreen('screen-whatsapp');
+
+  const typing = document.getElementById('wa-typing');
+  const status = document.getElementById('wa-status');
+
+  typing.classList.add('show');
+  status.textContent = 'escribiendo…';
+
+  schedule(() => {
+    typing.classList.remove('show');
+    status.textContent = 'en línea';
+    document.getElementById('wa-msg-1').hidden = false;
+    vibrate(20);
+  }, 1800);
+
+  schedule(() => {
+    document.getElementById('wa-msg-2').hidden = false;
+    vibrate(20);
+  }, 3400);
+
+  schedule(() => {
+    status.textContent = 'escribiendo…';
+  }, 4100);
+
+  schedule(() => {
+    status.textContent = 'en línea';
+    document.getElementById('wa-msg-3').hidden = false;
+    document.getElementById('wa-footer').hidden = false;
+    vibrate(20);
+  }, 5400);
+}
+
+function resetWhatsAppFlow() {
+  const typing = document.getElementById('wa-typing');
+  if (typing) typing.classList.remove('show');
+  const status = document.getElementById('wa-status');
+  if (status) status.textContent = 'en línea';
+  ['wa-msg-1', 'wa-msg-2', 'wa-msg-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.hidden = true;
+  });
+  const footer = document.getElementById('wa-footer');
+  if (footer) footer.hidden = true;
+}
+
 function answerCall() {
   vibrate(50);
   showScreen('screen-active-call');
@@ -107,13 +161,18 @@ function answerCall() {
   const bubble = document.getElementById('advisor-bubble');
   bubble.classList.remove('show');
   document.querySelectorAll('.code-digit-reveal').forEach(el => el.textContent = '');
-  schedule(() => bubble.classList.add('show'), 1500);
+  schedule(() => {
+    bubble.classList.add('show');
+    advisorAudio.currentTime = 0;
+    advisorAudio.play().catch(() => {});
+  }, 1500);
   revealCode();
-  // Let all four digits settle, then wait for the viewer to continue.
+  // Let the viewer continue right after the 4th digit settles, without waiting for
+  // Clara's "Repito..." (the audio keeps playing in the background either way).
   schedule(() => {
     document.getElementById('call-continue').disabled = false;
     document.getElementById('call-tap-hint').classList.add('show');
-  }, 3600);
+  }, 17300);
 }
 
 function continueFromAdvisor() {
@@ -122,6 +181,7 @@ function continueFromAdvisor() {
   button.disabled = true;
   button.hidden = true;
   document.getElementById('call-tap-hint').classList.remove('show');
+  advisorAudio.pause();
   showScreen('screen-opening-app');
   schedule(openBCPApp, 4000);
 }
@@ -140,8 +200,12 @@ function startCallTimer() {
 }
 
 function revealCode() {
-  const digits = ['1', '2', '3', '4'];
+  const digits = ['4', '8', '7', '0'];
   const ids = ['cd1', 'cd2', 'cd3', 'cd4'];
+  // Audio starts at 1500ms. Exact per-digit timestamps from ElevenLabs alignment
+  // (scripts/generate-audio.mjs), offset by that 1500ms audio start delay.
+  const AUDIO_START_DELAY = 1500;
+  const DIGIT_TIMES_MS = [13305, 13920, 14489, 15174];
   ids.forEach((id, i) => {
     schedule(() => {
       const el = document.getElementById(id);
@@ -154,7 +218,7 @@ function revealCode() {
           el.style.transform = 'scale(1)';
         }, 150);
       }
-    }, 2000 + i * 400);
+    }, AUDIO_START_DELAY + DIGIT_TIMES_MS[i]);
   });
 }
 
@@ -168,9 +232,6 @@ function openBCPApp() {
 
 function openCodigoConfianza() {
   vibrate(30);
-  enteredCode = '';
-  currentBoxIndex = 0;
-  isProcessing = false;
 
   const boxes = document.querySelectorAll('.code-box');
   boxes.forEach(box => {
@@ -181,92 +242,42 @@ function openCodigoConfianza() {
   const codeBoxes = document.getElementById('code-boxes');
   if (codeBoxes) codeBoxes.classList.remove('shake');
 
-  if (boxes[0]) boxes[0].classList.add('focused');
-
-  navigateWithinBCP('screen-code-entry');
+  navigateWithinBCP('screen-code-entry', revealConfidenceCode);
 }
 
-function pressKey(digit) {
-  if (currentBoxIndex >= 4 || isProcessing) return;
+function revealConfidenceCode() {
+  // El código ya existe para esta sesión real — Rosa solo lo ve y compara, nunca lo escribe.
+  // No hay botón de "confirmar": ella misma nota que coincide con lo que dijo Clara.
+  const digits = CORRECT_CODE.split('');
+  digits.forEach((digit, i) => {
+    schedule(() => {
+      const box = document.getElementById(`box-${i}`);
+      if (box) {
+        box.textContent = digit;
+        box.className = 'code-box filled pop';
+        vibrate(15);
+      }
+    }, i * 220);
+  });
 
-  vibrate(15);
-
-  const box = document.getElementById(`box-${currentBoxIndex}`);
-  if (!box) return;
-
-  box.textContent = digit;
-  box.className = 'code-box filled pop';
-  enteredCode += digit;
-  currentBoxIndex++;
-
-  if (currentBoxIndex < 4) {
-    const nextBox = document.getElementById(`box-${currentBoxIndex}`);
-    if (nextBox) nextBox.classList.add('focused');
-  }
-
-  if (currentBoxIndex === 4) {
-    isProcessing = true;
-    schedule(() => validateCode(), 300);
-  }
-}
-
-function pressDelete() {
-  if (currentBoxIndex <= 0 || isProcessing) return;
-
-  vibrate(10);
-  currentBoxIndex--;
-  const box = document.getElementById(`box-${currentBoxIndex}`);
-  if (box) {
-    box.textContent = '';
-    box.className = 'code-box focused';
-  }
-
-  if (currentBoxIndex < 3) {
-    const nextBox = document.getElementById(`box-${currentBoxIndex + 1}`);
-    if (nextBox) nextBox.classList.remove('focused');
-  }
-
-  enteredCode = enteredCode.slice(0, -1);
-}
-
-function validateCode() {
-  if (enteredCode === CORRECT_CODE) {
-    const boxes = document.querySelectorAll('.code-box');
-    boxes.forEach(box => {
-      box.className = 'code-box success';
-    });
+  // Tras un momento para leerlo y compararlo con la voz de Clara, los recuadros lo
+  // confirman en silencio — Rosa ya sabe que es Clara y sigue la llamada, sin pantallas extra.
+  schedule(() => {
+    document.querySelectorAll('.code-box').forEach(box => box.classList.add('success'));
     vibrate([50, 30, 50]);
-
-    schedule(() => {
-      showScreen('screen-success');
-    }, 600);
-  } else {
-    const boxes = document.querySelectorAll('.code-box');
-    boxes.forEach(box => {
-      box.className = 'code-box error';
-    });
-
-    const codeBoxes = document.getElementById('code-boxes');
-    if (codeBoxes) {
-      codeBoxes.classList.add('shake');
-    }
-
-    vibrate([100, 30, 100, 30, 100]);
-
-    schedule(() => {
-      if (codeBoxes) codeBoxes.classList.remove('shake');
-      showScreen('screen-unverified');
-      document.getElementById('unverified-title').focus();
-    }, 450);
-  }
+  }, digits.length * 220 + 1100);
 }
 
-function correctCallCode() {
-  openCodigoConfianza();
+function showFraudPreview() {
+  vibrate([100, 30, 100, 30, 100]);
+  showScreen('screen-unverified');
+  document.getElementById('unverified-title').focus();
 }
 
 function resetDemo() {
   clearSceneActions();
+  advisorAudio.pause();
+  advisorAudio.currentTime = 0;
   document.getElementById('call-continue').hidden = true;
   document.getElementById('call-continue').disabled = true;
   document.getElementById('call-tap-hint').classList.remove('show');
@@ -274,9 +285,6 @@ function resetDemo() {
   document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callSeconds = 0;
-  enteredCode = '';
-  currentBoxIndex = 0;
-  isProcessing = false;
 
   const revealDigits = ['cd1','cd2','cd3','cd4'];
   revealDigits.forEach(id => {
@@ -289,6 +297,8 @@ function resetDemo() {
 
   const pushNotif = document.getElementById('push-notif');
   if (pushNotif) pushNotif.classList.remove('show');
+
+  resetWhatsAppFlow();
 
   showScreen('screen-welcome');
 }
