@@ -90,16 +90,29 @@ function answerCall() {
   showScreen('screen-active-call');
   startCallTimer();
   document.getElementById('return-to-app').hidden = true;
+  document.getElementById('call-continue').hidden = false;
+  document.getElementById('call-continue').disabled = true;
+  document.getElementById('call-tap-hint').classList.remove('show');
   const bubble = document.getElementById('advisor-bubble');
   bubble.classList.remove('show');
   document.querySelectorAll('.code-digit-reveal').forEach(el => el.textContent = '');
   schedule(() => bubble.classList.add('show'), 1500);
   revealCode();
-  // Leave the completed code visible before simulating Rosa opening her app.
+  // Let all four digits settle, then wait for the viewer to continue.
   schedule(() => {
-    showScreen('screen-opening-app');
-    schedule(openBCPApp, 4000);
-  }, 7600);
+    document.getElementById('call-continue').disabled = false;
+    document.getElementById('call-tap-hint').classList.add('show');
+  }, 3600);
+}
+
+function continueFromAdvisor() {
+  const button = document.getElementById('call-continue');
+  if (currentScreen !== 'screen-active-call' || button.disabled || button.hidden) return;
+  button.disabled = true;
+  button.hidden = true;
+  document.getElementById('call-tap-hint').classList.remove('show');
+  showScreen('screen-opening-app');
+  schedule(openBCPApp, 4000);
 }
 
 function startCallTimer() {
@@ -135,6 +148,8 @@ function revealCode() {
 }
 
 function openBCPApp() {
+  document.getElementById('call-continue').hidden = true;
+  document.getElementById('call-tap-hint').classList.remove('show');
   document.getElementById('return-to-app').hidden = false;
   vibrate(30);
   showScreen('screen-bcp-home');
@@ -243,6 +258,9 @@ function correctCallCode() {
 
 function resetDemo() {
   clearSceneActions();
+  document.getElementById('call-continue').hidden = true;
+  document.getElementById('call-continue').disabled = true;
+  document.getElementById('call-tap-hint').classList.remove('show');
   document.getElementById('return-to-app').hidden = true;
   document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);

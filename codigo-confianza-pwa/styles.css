@@ -1280,3 +1280,19 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
   .bcp-icons-grid { row-gap: 2px; }
   .bcp-icon-circle { width: 48px; height: 48px; }
 }
+
+/* Continue through the advisor scene by tapping, while phone controls stay usable. */
+.call-number-active { font-size: 24px; margin-top: 40px; }
+.call-continue { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.call-continue:disabled { cursor: default; }
+.call-continue:focus-visible { outline: 3px solid #A8C9FF; outline-offset: -6px; border-radius: 12px; }
+.call-tap-hint { margin: -8px 0 20px; flex-shrink: 0; }
+.active-call .call-controls, .active-call .return-to-app { position: relative; z-index: 4; flex-shrink: 0; }
+.active-call { overflow-y: auto; }
+@media (max-height: 700px) {
+  .active-call { padding-top: 16px; }
+  .active-call .call-status-bar { margin-bottom: 12px; }
+  .call-number-active { margin-top: 12px; }
+  .active-call .advisor-bubble { margin: 20px 24px 16px; padding: 16px; }
+  .active-call .call-controls { margin-bottom: calc(24px + var(--safe-bottom)); }
+}
