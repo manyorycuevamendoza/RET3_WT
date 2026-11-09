@@ -1130,7 +1130,7 @@ html, body {
 .success-title {
   font-size: 24px;
   font-weight: 800;
-  color: var(--success);
+  color: var(--bcp-dark);
   margin-bottom: 6px;
 }
 
@@ -1142,7 +1142,7 @@ html, body {
 
 .success-details {
   width: 100%;
-  background: #F8FAF8;
+  background: #F0F4FC;
   border-radius: var(--radius-card);
   padding: 4px 20px;
   margin-bottom: 20px;
@@ -1175,7 +1175,7 @@ html, body {
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: var(--success);
+  color: #58617C;
   font-weight: 600;
 }
 
@@ -1201,7 +1201,7 @@ html, body {
 @keyframes confirmation-check { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes confirmation-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes confirmation-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes confirmation-state { from { background-color: #E5F6E7; } to { background-color: transparent; } }
+@keyframes confirmation-state { from { background-color: #FFF0E2; } to { background-color: transparent; } }
 @media (prefers-reduced-motion: reduce) {
   #screen-success.active .success-content * { animation: none !important; }
 }
@@ -1328,7 +1328,7 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
   #screen-app-transition.active .app-transition-content img { animation: none; }
 }
 
-.success-return { background: var(--success); margin-top: 24px; }
+.success-return { background: var(--bcp-blue); margin-top: 24px; }
 @media (max-height: 650px) {
   .success-content { padding: 20px 24px; }
   .success-check { width: 64px; height: 64px; margin-bottom: 12px; }
@@ -1357,3 +1357,12 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
   .code-entry-screen .key { height: 44px; }
   .code-entry-screen .keypad { gap: 6px; margin-bottom: calc(8px + var(--safe-bottom)); }
 }
+
+/* BCP palette for the verified-call result. */
+.success-screen > .in-call-bar { background: #001B5E; }
+.success-check-disc { fill: var(--bcp-dark); stroke: var(--bcp-orange); stroke-width: 2; }
+.success-details .detail-label { color: #58617C; }
+.success-details .detail-value { color: var(--bcp-dark); }
+.success-details .detail-divider { background: #DCE4F2; }
+.success-state-value { padding: 4px 10px; border-radius: 20px; background: #E0E9FA; font-weight: 700; }
+.success-state-mark, .success-safe-msg svg { color: var(--bcp-orange); }
