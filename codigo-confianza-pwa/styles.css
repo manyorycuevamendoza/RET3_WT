@@ -855,6 +855,35 @@ html, body {
 }
 
 
+.codigo-confianza-grid-icon {
+  position: relative;
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+}
+
+.codigo-confianza-grid-icon .bcp-icon-new {
+  background: #FF7800;
+}
+
+.codigo-confianza-grid-icon .bcp-icon-new svg {
+  stroke: white;
+}
+
+.new-badge {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  background: #F44336;
+  color: white;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
 /* ====== CODE ENTRY ====== */
 .code-entry-screen {
   height: 100%;
@@ -976,6 +1005,20 @@ html, body {
 .call-result-reminder { margin-top: 16px; padding: 12px; background: #FFF3F1; border-radius: 12px; color: #992A23; font-size: 14px; line-height: 1.5; font-weight: 600; }
 .call-result-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 26px; }
 .call-result-actions button { width: 100%; max-width: 320px; min-height: 48px; padding: 12px 16px; }
+.btn-secondary-danger {
+  background: transparent;
+  border: 1.5px solid #C83229;
+  color: #C83229;
+  border-radius: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-secondary-danger:active {
+  background: #FFF0EF;
+}
 @media (max-height: 650px) {
   .call-result-content { padding: 20px; }
   .call-result-icon { width: 48px; height: 48px; margin-bottom: 12px; }
@@ -984,13 +1027,8 @@ html, body {
   .call-result-actions { margin-top: 18px; }
 }
 
-/* A calm warning: symbol first, explanation next, then a clear next action. */
-.warning-symbol { stroke-dasharray: 1; stroke-dashoffset: 0; }
-.warning-halo { opacity: 0; transform-origin: 32px 32px; }
-#screen-unverified.active .call-result-icon { animation: warning-icon 300ms cubic-bezier(.22, 1, .36, 1) backwards; }
-#screen-unverified.active .warning-symbol { animation: warning-draw 300ms ease-out 120ms backwards; }
-#screen-unverified.active .warning-dot { animation: warning-fade 200ms ease-out 260ms backwards; }
-#screen-unverified.active .warning-halo { animation: warning-halo 800ms ease-out 100ms backwards; }
+/* Unverified shield entrance */
+#screen-unverified.active .unverified-shield { animation: warning-icon 400ms cubic-bezier(.22, 1, .36, 1) backwards; }
 #screen-unverified.active .call-result-label { animation: warning-fade 300ms ease-out 100ms backwards; }
 #screen-unverified.active .call-result-content h2 { animation: warning-enter 350ms cubic-bezier(.22, 1, .36, 1) 180ms backwards; }
 #screen-unverified.active .call-result-message { animation: warning-enter 400ms cubic-bezier(.22, 1, .36, 1) 300ms backwards; }
