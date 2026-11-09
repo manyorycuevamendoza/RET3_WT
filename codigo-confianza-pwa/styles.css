@@ -1212,12 +1212,12 @@ html, body {
 .time-hour-hand, .time-minute-hand { transform-origin: 40px 40px; }
 .time-minute-hand { transform: rotate(30deg); }
 .time-hour-hand { transform: rotate(2.5deg); }
-#screen-time-passage.active .time-passage-content { animation: time-scene 2200ms linear both; }
+#screen-time-passage.active .time-passage-content { animation: time-scene 4200ms linear both; }
 #screen-time-passage.active .time-minute-hand { animation: five-minutes 900ms cubic-bezier(.4, 0, .2, 1) 250ms backwards; }
 #screen-time-passage.active .time-hour-hand { animation: hour-advance 900ms cubic-bezier(.4, 0, .2, 1) 250ms backwards; }
 @keyframes five-minutes { from { transform: rotate(0); } to { transform: rotate(30deg); } }
 @keyframes hour-advance { from { transform: rotate(0); } to { transform: rotate(2.5deg); } }
-@keyframes time-scene { 0%, 100% { opacity: 0; } 12%, 93% { opacity: 1; } }
+@keyframes time-scene { 0%, 100% { opacity: 0; } 6%, 96.4% { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   #screen-time-passage.active .time-passage-content,
   #screen-time-passage.active .time-minute-hand,

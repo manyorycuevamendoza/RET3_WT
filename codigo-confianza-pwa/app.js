@@ -49,7 +49,7 @@ function startDemo() {
   schedule(() => document.querySelector('.lockscreen').classList.add('notification-departing'), 6100);
   schedule(() => {
     showScreen('screen-time-passage');
-    schedule(acceptCall, 2200);
+    schedule(acceptCall, 4200);
   }, 6500);
 }
 

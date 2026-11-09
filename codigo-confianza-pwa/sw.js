@@ -1,5 +1,5 @@
-const CACHE = 'codigo-confianza-v12';
-const ASSETS = ['./', './index.html', './styles.css?v=12', './app.js?v=12', './assets/bcp-app.webp', './manifest.json'];
+const CACHE = 'codigo-confianza-v13';
+const ASSETS = ['./', './index.html', './styles.css?v=13', './app.js?v=13', './assets/bcp-app.webp', './manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
