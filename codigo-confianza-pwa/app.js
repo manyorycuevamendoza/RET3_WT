@@ -96,6 +96,59 @@ function acceptCall() {
   }, 300);
 }
 
+function declineCall() {
+  vibrate(30);
+  showScreen('screen-call-declined');
+  schedule(() => startWhatsAppFlow(), 2200);
+}
+
+function startWhatsAppFlow() {
+  resetWhatsAppFlow();
+  showScreen('screen-whatsapp');
+
+  const typing = document.getElementById('wa-typing');
+  const status = document.getElementById('wa-status');
+
+  typing.classList.add('show');
+  status.textContent = 'escribiendo…';
+
+  schedule(() => {
+    typing.classList.remove('show');
+    status.textContent = 'en línea';
+    document.getElementById('wa-msg-1').hidden = false;
+    vibrate(20);
+  }, 1800);
+
+  schedule(() => {
+    document.getElementById('wa-msg-2').hidden = false;
+    vibrate(20);
+  }, 3400);
+
+  schedule(() => {
+    status.textContent = 'escribiendo…';
+  }, 4100);
+
+  schedule(() => {
+    status.textContent = 'en línea';
+    document.getElementById('wa-msg-3').hidden = false;
+    document.getElementById('wa-footer').hidden = false;
+    vibrate(20);
+  }, 5400);
+}
+
+function resetWhatsAppFlow() {
+  const typing = document.getElementById('wa-typing');
+  if (typing) typing.classList.remove('show');
+  const status = document.getElementById('wa-status');
+  if (status) status.textContent = 'en línea';
+  ['wa-msg-1', 'wa-msg-2', 'wa-msg-3'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.hidden = true;
+  });
+  const footer = document.getElementById('wa-footer');
+  if (footer) footer.hidden = true;
+}
+
 function answerCall() {
   vibrate(50);
   showScreen('screen-active-call');
@@ -289,6 +342,8 @@ function resetDemo() {
 
   const pushNotif = document.getElementById('push-notif');
   if (pushNotif) pushNotif.classList.remove('show');
+
+  resetWhatsAppFlow();
 
   showScreen('screen-welcome');
 }

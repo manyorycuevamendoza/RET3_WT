@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=35">
+  <link rel="stylesheet" href="styles.css?v=36">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <p class="welcome-desc"><strong>¿Es el BCP quien te llama?</strong><span>Antes de seguir, compruébalo en tu app.</span></p>
         <ol class="welcome-steps" aria-label="Cómo funciona Código Confianza">
           <li><span class="welcome-step-number" aria-hidden="true">1</span><span>Sabes por qué te llamarán</span></li>
-          <li><span class="welcome-step-number" aria-hidden="true">2</span><span>El asesor te da un código</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">2</span><span>Clara te dice tu código</span></li>
           <li><span class="welcome-step-number" aria-hidden="true">3</span><span>Lo compruebas en tu app BCP</span></li>
         </ol>
         <button class="btn-primary btn-large" onclick="startDemo()">Ver la demo con Rosa <span aria-hidden="true">→</span></button>
@@ -50,7 +50,7 @@
             <span class="push-time-ago">ahora</span>
           </div>
           <div class="push-title">Te llamaremos en 5 minutos</div>
-          <div class="push-body">Un asesor BCP te llamará para contarte sobre tu <strong>crédito preaprobado</strong>.</div>
+          <div class="push-body">Clara, tu asistente BCP, te llamará para contarte sobre tu <strong>crédito preaprobado</strong>.</div>
         </div>
         <div class="notification-tap-hint" id="notification-tap-hint" aria-hidden="true">
           <span class="notification-tap-mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg></span>
@@ -97,7 +97,7 @@
         </div>
         <div class="call-actions-incoming">
           <div class="call-action">
-            <button class="call-btn call-btn-decline" onclick="resetDemo()">
+            <button class="call-btn call-btn-decline" onclick="declineCall()">
               <svg viewBox="0 0 24 24" fill="white"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.956.956 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/></svg>
             </button>
             <span class="call-action-label" style="color:#F44336">Rechazar</span>
@@ -108,6 +108,61 @@
             </button>
             <span class="call-action-label" style="color:#4CAF50">Aceptar</span>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SCREEN 3b: CALL DECLINED ============ -->
+    <div class="screen" id="screen-call-declined">
+      <div class="demo-transition time-passage-content" role="status">
+        <svg class="time-passage-icon" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+          <circle cx="40" cy="40" r="39" fill="#FFFFFF06"/>
+          <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M28 28l24 24M52 28L28 52" stroke="#C83229" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h2>Rosa no contesta</h2>
+        <p>Minutos después, le llega un mensaje de Clara.</p>
+      </div>
+    </div>
+
+    <!-- ============ SCREEN 3c: WHATSAPP FALLBACK ============ -->
+    <div class="screen" id="screen-whatsapp">
+      <div class="whatsapp-screen">
+        <div class="wa-header">
+          <button class="wa-back" onclick="resetDemo()" aria-label="Volver al inicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="15,18 9,12 15,6"/></svg>
+          </button>
+          <div class="wa-avatar">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z" fill="white"/>
+              <path d="M19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z" fill="white" opacity="0.75"/>
+            </svg>
+          </div>
+          <div class="wa-header-info">
+            <div class="wa-name">Clara · BCP <svg class="wa-verified" viewBox="0 0 24 24" fill="#53BDEB" aria-label="Cuenta verificada"><path d="M12 2l2.4 1.2 2.6-.6 1.4 2.3 2.3 1.4-.6 2.6L21.3 11l-1.2 2.4 1.2 2.4-2.3 1.3.6 2.6-2.3 1.4-1.4 2.3-2.6-.6L12 24l-2.4-1.2-2.6.6-1.4-2.3-2.3-1.4.6-2.6L2.7 15l1.2-2.4L2.7 10l2.3-1.3-.6-2.6 2.3-1.4L8.1 1.4l2.6.6L12 2z"/><path d="M8.5 12.2l2.3 2.3 4.7-4.7" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            <div class="wa-status" id="wa-status">en línea</div>
+          </div>
+        </div>
+        <div class="wa-chat" id="wa-chat">
+          <div class="wa-date-chip">Hoy</div>
+          <div class="wa-typing" id="wa-typing">
+            <span class="wa-typing-dot"></span><span class="wa-typing-dot"></span><span class="wa-typing-dot"></span>
+          </div>
+          <div class="wa-bubble wa-bubble-in" id="wa-msg-1" hidden>
+            <p>¡Hola! Soy Clara, la asistente virtual del WhatsApp oficial del BCP. 🤗 Intenté llamarte por tu crédito aprobado. ¿Cuándo te parece que te vuelva a llamar?</p>
+            <span class="wa-time">10:31</span>
+          </div>
+          <div class="wa-bubble wa-bubble-out" id="wa-msg-2" hidden>
+            <p>Lunes a las 3pm 👍</p>
+            <span class="wa-time">10:32 <svg class="wa-check" viewBox="0 0 16 11" fill="none"><path d="M1 5.5l3 3 7-8" stroke="#53BDEB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5.5l3 3 7-8" stroke="#53BDEB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <div class="wa-bubble wa-bubble-in" id="wa-msg-3" hidden>
+            <p>Perfecto, Rosa 🙌 El lunes a las 3:00pm te vuelvo a llamar. Recuerda: tu Código Confianza solo vive en tu app — nunca lo compartas con nadie.</p>
+            <span class="wa-time">10:32</span>
+          </div>
+        </div>
+        <div class="wa-footer" id="wa-footer" hidden>
+          <button class="btn-primary" onclick="resetDemo()">Volver al inicio</button>
         </div>
       </div>
     </div>
@@ -128,22 +183,22 @@
                 <span class="speaking-bar"></span>
                 <span class="speaking-bar"></span>
               </div>
-              Asesor hablando
+              Clara hablando
             </div>
           <div class="advisor-info">
-            <div class="advisor-avatar-small">
-              <svg viewBox="0 0 40 40" fill="none">
-                <circle cx="20" cy="15" r="8" fill="white"/>
-                <ellipse cx="20" cy="33" rx="12" ry="8" fill="white"/>
+            <div class="advisor-avatar-small advisor-avatar-ai">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z" fill="white"/>
+                <path d="M19 15l.9 2.6 2.6.9-2.6.9L19 22l-.9-2.6-2.6-.9 2.6-.9L19 15z" fill="white" opacity="0.75"/>
               </svg>
             </div>
             <div>
-              <div class="advisor-name">Carlos Mendoza</div>
-              <div class="advisor-role">Asesor BCP</div>
+              <div class="advisor-name">Clara</div>
+              <div class="advisor-role">Asistente de voz IA · BCP</div>
             </div>
           </div>
           <div class="advisor-speech">
-            "Hola Rosa, soy Carlos del BCP. Tu <strong>Código Confianza</strong> es:"
+            "Hola Rosa, soy Clara, tu asistente del BCP. Tu <strong>Código Confianza</strong> es:"
           </div>
           <div class="code-reveal" id="code-reveal">
             <span class="code-digit-reveal" id="cd1"></span>
@@ -349,8 +404,8 @@
           <div class="success-subtitle">Esta llamada es oficialmente del BCP</div>
           <div class="success-details">
             <div class="detail-row">
-              <span class="detail-label">Asesor</span>
-              <span class="detail-value">Carlos Mendoza</span>
+              <span class="detail-label">Atendido por</span>
+              <span class="detail-value">Clara · Asistente IA</span>
             </div>
             <div class="detail-divider"></div>
             <div class="detail-row">
@@ -380,7 +435,7 @@
 
   </div>
 
-  <script src="app.js?v=30"></script>
+  <script src="app.js?v=31"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
