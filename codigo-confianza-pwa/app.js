@@ -2,7 +2,6 @@ const CORRECT_CODE = '4870';
 let currentScreen = 'screen-welcome';
 let callTimerInterval = null;
 let callSeconds = 0;
-let isProcessing = false;
 const pendingTimeouts = new Set();
 const advisorAudio = new Audio('assets/audio/clara-codigo-confianza.mp3');
 
@@ -233,7 +232,6 @@ function openBCPApp() {
 
 function openCodigoConfianza() {
   vibrate(30);
-  isProcessing = false;
 
   const boxes = document.querySelectorAll('.code-box');
   boxes.forEach(box => {
@@ -249,6 +247,7 @@ function openCodigoConfianza() {
 
 function revealConfidenceCode() {
   // El código ya existe para esta sesión real — Rosa solo lo ve y compara, nunca lo escribe.
+  // No hay botón de "confirmar": ella misma nota que coincide con lo que dijo Clara.
   const digits = CORRECT_CODE.split('');
   digits.forEach((digit, i) => {
     schedule(() => {
@@ -260,37 +259,19 @@ function revealConfidenceCode() {
       }
     }, i * 220);
   });
-}
 
-function confirmCodeMatch() {
-  if (isProcessing) return;
-  isProcessing = true;
-  vibrate([50, 30, 50]);
-
-  const boxes = document.querySelectorAll('.code-box');
-  boxes.forEach(box => box.classList.add('success'));
-
+  // Tras un momento para leerlo y compararlo con la voz de Clara, queda verificado.
   schedule(() => {
-    showScreen('screen-success');
-  }, 500);
+    document.querySelectorAll('.code-box').forEach(box => box.classList.add('success'));
+    vibrate([50, 30, 50]);
+    schedule(() => showScreen('screen-success'), 500);
+  }, digits.length * 220 + 1100);
 }
 
-function confirmCodeMismatch() {
-  if (isProcessing) return;
-  isProcessing = true;
+function showFraudPreview() {
   vibrate([100, 30, 100, 30, 100]);
-
-  const boxes = document.querySelectorAll('.code-box');
-  boxes.forEach(box => box.classList.add('error'));
-
-  const codeBoxes = document.getElementById('code-boxes');
-  if (codeBoxes) codeBoxes.classList.add('shake');
-
-  schedule(() => {
-    if (codeBoxes) codeBoxes.classList.remove('shake');
-    showScreen('screen-unverified');
-    document.getElementById('unverified-title').focus();
-  }, 450);
+  showScreen('screen-unverified');
+  document.getElementById('unverified-title').focus();
 }
 
 function resetDemo() {
@@ -304,7 +285,6 @@ function resetDemo() {
   document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callSeconds = 0;
-  isProcessing = false;
 
   const revealDigits = ['cd1','cd2','cd3','cd4'];
   revealDigits.forEach(id => {

@@ -979,8 +979,8 @@ html, body {
 }
 
 .code-box.filled {
-  border-color: var(--bcp-blue);
-  background: #EEF2FA;
+  border-color: #D0D5E0;
+  background: #FAFBFD;
   color: var(--bcp-orange);
 }
 
@@ -1049,47 +1049,20 @@ html, body {
 }
 
 /* ====== KEYPAD ====== */
-.code-compare {
+.code-fraud-link {
   margin-top: auto;
   margin-bottom: calc(24px + var(--safe-bottom));
-  padding: 0 24px;
-}
-
-.code-compare-question {
-  text-align: center;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--bcp-dark);
-  margin: 0 0 16px;
-}
-
-.code-compare-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.code-match-btn {
-  max-width: none;
-  background: var(--success);
-}
-
-.code-mismatch-btn {
-  width: 100%;
-  background: transparent;
-  border: 1.5px solid #C83229;
-  color: #C83229;
-  border-radius: var(--radius-btn);
-  padding: 14px 16px;
+  align-self: center;
+  background: none;
+  border: none;
+  color: #9098A8;
   font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.code-mismatch-btn:active {
-  background: #FFF0EF;
+  padding: 8px 12px;
 }
 
 /* ====== SHAKE ANIMATION ====== */
@@ -1337,7 +1310,7 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 
 .code-instruction { margin-bottom: 10px; }
 .code-dynamic-note { text-align: center; color: #58617C; font-size: 13px; line-height: 1.5; margin: 0 24px 20px; }
-.code-dynamic-note strong { display: block; color: var(--bcp-dark); font-weight: 700; }
+.code-dynamic-note strong { display: block; color: #3A4254; font-weight: 700; }
 .code-dynamic-note span { display: block; }
 @media (max-height: 700px) {
   .code-entry-screen .code-shield-icon { margin: 14px 0 10px; }
@@ -1347,7 +1320,7 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 @media (max-height: 600px) {
   .code-entry-screen .code-shield-icon { display: none; }
   .code-entry-screen .code-instruction { margin-top: 16px; }
-  .code-compare { margin-bottom: calc(14px + var(--safe-bottom)); }
+  .code-fraud-link { margin-bottom: calc(14px + var(--safe-bottom)); }
 }
 
 /* BCP palette for the verified-call result. */

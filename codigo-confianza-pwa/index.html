@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=38">
+  <link rel="stylesheet" href="styles.css?v=39">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -328,27 +328,20 @@
         <!-- Shield icon -->
         <div class="code-shield-icon">
           <svg viewBox="0 0 60 60" fill="none">
-            <path d="M30 5L8 15v13c0 14.2 8.6 26.6 22 30 13.4-3.4 22-15.8 22-30V15L30 5z" fill="rgba(0,42,141,0.06)" stroke="#002A8D" stroke-width="2"/>
+            <path d="M30 5L8 15v13c0 14.2 8.6 26.6 22 30 13.4-3.4 22-15.8 22-30V15L30 5z" fill="#F7F8FA" stroke="#B9C0CE" stroke-width="2"/>
             <polyline points="20,30 27,37 40,24" stroke="#F37021" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
         <div class="code-instruction">Este es tu Código Confianza para esta llamada</div>
         <p class="code-dynamic-note"><strong>Código dinámico</strong><span>Espera a que Clara lo diga en voz alta. Nunca lo compartas tú.</span></p>
-        <!-- Code boxes (ya visibles, Rosa solo compara) -->
+        <!-- Code boxes: solo se muestran, Rosa decide con su propio criterio -->
         <div class="code-boxes" id="code-boxes">
           <div class="code-box" id="box-0"></div>
           <div class="code-box" id="box-1"></div>
           <div class="code-box" id="box-2"></div>
           <div class="code-box" id="box-3"></div>
         </div>
-        <!-- Comparación, no tipeo -->
-        <div class="code-compare">
-          <p class="code-compare-question">¿Coincide con lo que dice Clara?</p>
-          <div class="code-compare-actions">
-            <button class="btn-primary code-match-btn" onclick="confirmCodeMatch()">Sí, coincide</button>
-            <button class="code-mismatch-btn" onclick="confirmCodeMismatch()">No coincide, colgar</button>
-          </div>
-        </div>
+        <button type="button" class="code-fraud-link" onclick="showFraudPreview()">¿No coincidió? Así se ve la alerta</button>
       </div>
     </div>
 
@@ -426,7 +419,7 @@
 
   </div>
 
-  <script src="app.js?v=33"></script>
+  <script src="app.js?v=34"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
