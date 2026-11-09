@@ -103,7 +103,8 @@ html, body {
   line-height: 1.6;
   margin-bottom: 24px;
 }
-.welcome-desc strong { color: white; font-weight: 700; }
+.welcome-desc strong { display: block; color: white; font-weight: 700; }
+.welcome-desc > span { display: block; max-width: 290px; margin-top: 6px; font-size: 15px; line-height: 1.5; }
 
 .welcome-steps {
   list-style: none;
