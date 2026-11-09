@@ -7,10 +7,12 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/webp" href="assets/bcp-app.webp">
+  <link rel="apple-touch-icon" href="assets/bcp-app.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=5">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -20,11 +22,7 @@
     <div class="screen active" id="screen-welcome">
       <div class="welcome-bg">
         <div class="welcome-logo">
-          <svg viewBox="0 0 120 80" class="bcp-logo-large">
-            <text x="10" y="55" font-family="Inter, sans-serif" font-weight="900" font-size="48" fill="#002A8D">&gt;BCP&gt;</text>
-            <polygon points="8,30 2,45 8,40" fill="#0063BD"/>
-            <polygon points="112,30 118,45 112,40" fill="#F37021"/>
-          </svg>
+          <img src="assets/bcp-app.webp" class="bcp-logo-large" alt="BCP Banca Móvil" width="480" height="480">
         </div>
         <h1 class="welcome-title">Código Confianza</h1>
         <p class="welcome-desc">Verifica que quien te llama es realmente el BCP.<br>Sin compartir datos. Sin riesgo.</p>
@@ -60,22 +58,30 @@
         <div class="lockscreen-date" id="lock-date">Viernes 8 de noviembre</div>
         <div class="push-notification" id="push-notif">
           <div class="push-header">
-            <div class="push-icon-bcp">
-              <svg viewBox="0 0 24 24">
-                <polygon points="12,2 16,12 12,9 8,12" fill="white"/>
-                <polygon points="12,22 8,12 12,15 16,12" fill="#F37021"/>
-              </svg>
+            <div class="push-icon-bcp"><img src="assets/bcp-app.webp" alt="BCP" width="480" height="480">
             </div>
             <span class="push-app-name">BCP Banca Móvil</span>
             <span class="push-time-ago">ahora</span>
           </div>
-          <div class="push-title">BCP desea contactarte</div>
-          <div class="push-body">Motivo: <strong>Crédito preaprobado</strong><br>Un asesor del BCP quiere comunicarse contigo.</div>
-          <div class="push-actions">
-            <button class="push-btn push-btn-accept" onclick="acceptCall()">Aceptar llamada</button>
-            <button class="push-btn push-btn-decline" onclick="declineCall()">Ahora no</button>
-          </div>
+          <div class="push-title">Te llamaremos en 5 minutos</div>
+          <div class="push-body">Un asesor BCP te llamará para contarte sobre tu <strong>crédito preaprobado</strong>.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-time-passage">
+      <div class="demo-transition" role="status">
+        <svg class="time-passage-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 12v12l8 5"/></svg>
+        <h2>5 minutos después</h2>
+        <p>Rosa recibe la llamada</p>
+      </div>
+    </div>
+
+    <div class="screen" id="screen-opening-app">
+      <div class="demo-transition" role="status">
+        <div class="demo-app-tap"><img src="assets/bcp-app.webp" alt="BCP Banca Móvil" width="96" height="96"><span class="demo-tap-ring" aria-hidden="true"></span></div>
+        <h2>Rosa abre su app BCP</h2>
+        <p>La llamada continúa</p>
       </div>
     </div>
 
@@ -92,7 +98,7 @@
           </svg>
         </div>
         <div class="call-actions-incoming">
-          <button class="call-btn call-btn-decline" onclick="showScreen('screen-welcome')">
+          <button class="call-btn call-btn-decline" onclick="resetDemo()">
             <svg viewBox="0 0 24 24" fill="white"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.956.956 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/></svg>
           </button>
           <button class="call-btn call-btn-accept" onclick="answerCall()">
@@ -116,6 +122,14 @@
         <div class="call-number" style="font-size:24px;margin-top:40px">+51 987 654 321</div>
         <div class="call-timer" id="call-timer">00:00</div>
         <div class="advisor-bubble" id="advisor-bubble">
+            <div class="advisor-speaking-tag" id="speaking-tag">
+              <div class="speaking-bars" aria-hidden="true">
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+                <span class="speaking-bar"></span>
+              </div>
+              Asesor hablando
+            </div>
           <div class="advisor-info">
             <div class="advisor-avatar-small">
               <svg viewBox="0 0 40 40" fill="none">
@@ -138,13 +152,7 @@
             <span class="code-digit-reveal" id="cd4"></span>
           </div>
         </div>
-        <button class="btn-open-app" id="btn-open-app" onclick="openBCPApp()">
-          <svg viewBox="0 0 24 24" style="width:20px;height:20px;margin-right:8px" fill="none" stroke="white" stroke-width="2">
-            <polygon points="12,2 16,12 12,9 8,12" fill="white" stroke="none"/>
-            <polygon points="12,22 8,12 12,15 16,12" fill="#F37021" stroke="none"/>
-          </svg>
-          Abrir App BCP
-        </button>
+        <button class="return-to-app" id="return-to-app" onclick="openBCPApp()" hidden>Volver a BCP</button>
         <div class="call-controls">
           <button class="call-control-btn">
             <svg viewBox="0 0 24 24" fill="white" width="24"><path d="M19 11h-1.7c0 .74-.16 1.43-.43 2.05l1.23 1.23c.56-.98.9-2.09.9-3.28zm-4.02.17c0-.06.02-.11.02-.17V5c0-1.66-1.34-3-3-3S9 3.34 9 5v.18l5.98 5.99zM4.27 3L3 4.27l6.01 6.01V11c0 1.66 1.33 3 2.99 3 .22 0 .44-.03.65-.08l1.66 1.66c-.71.33-1.5.52-2.31.52-2.76 0-5.3-2.1-5.3-5.1H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c.91-.13 1.77-.45 2.54-.9L19.73 21 21 19.73 4.27 3z"/></svg>
@@ -154,7 +162,7 @@
             <svg viewBox="0 0 24 24" fill="white" width="24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
             <span>Altavoz</span>
           </button>
-          <button class="call-control-btn call-end" onclick="showScreen('screen-welcome')">
+          <button class="call-control-btn call-end" onclick="resetDemo()">
             <svg viewBox="0 0 24 24" fill="white"><path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.85-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08a.956.956 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.48 2.48c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28-.79-.74-1.69-1.36-2.67-1.85-.33-.16-.56-.5-.56-.9v-3.1C15.15 9.25 13.6 9 12 9z"/></svg>
             <span>Colgar</span>
           </button>
@@ -166,17 +174,12 @@
     <div class="screen" id="screen-bcp-home">
       <div class="bcp-app">
         <!-- Active call indicator bar -->
-        <div class="in-call-bar" id="in-call-bar">
-          <div class="in-call-dot"></div>
-          <span>Llamada en curso — toca para volver</span>
-        </div>
+        <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
         <!-- BCP Header -->
         <div class="bcp-header">
           <div class="bcp-header-content">
             <div class="bcp-header-left">
-              <svg viewBox="0 0 80 40" class="bcp-logo-header">
-                <text x="2" y="28" font-family="Inter, sans-serif" font-weight="900" font-size="26" fill="white">&gt;BCP&gt;</text>
-              </svg>
+              <img src="assets/bcp-app.webp" class="bcp-logo-header" alt="BCP Banca Móvil" width="480" height="480">
               <div class="bcp-greeting">¡Hola, Rosa!</div>
             </div>
             <div class="bcp-header-right">
@@ -207,6 +210,7 @@
         </div>
 
         <!-- Quick Actions Grid -->
+        <div class="verification-guide" id="verification-guide"><strong>Verifica tu llamada</strong><p>Toca <b>Código Confianza</b> e ingresa el código que te dio el asesor.</p></div>
         <div class="bcp-section-title">Accesos rápidos</div>
         <div class="bcp-icons-grid">
           <div class="bcp-icon-item" onclick="showToast('Beneficios Qore')">
@@ -246,7 +250,7 @@
             <span>Pagar servicios</span>
           </div>
           <!-- NEW: Código Confianza -->
-          <div class="bcp-icon-item codigo-confianza-icon" onclick="openCodigoConfianza()" id="icon-codigo">
+          <button type="button" class="bcp-icon-item codigo-confianza-icon" onclick="openCodigoConfianza()" id="icon-codigo" aria-describedby="verification-guide">
             <div class="bcp-icon-circle bcp-icon-new">
               <svg viewBox="0 0 28 28" fill="none">
                 <path d="M14 3L4 8v6c0 7.1 4.3 13.3 10 15 5.7-1.7 10-7.9 10-15V8L14 3z" stroke="#002A8D" stroke-width="2" fill="rgba(0,42,141,0.08)"/>
@@ -254,8 +258,8 @@
               </svg>
             </div>
             <span>Código Confianza</span>
-            <div class="new-badge">NUEVO</div>
-          </div>
+            <span class="codigo-tap-hint">Toca aquí</span>
+          </button>
         </div>
 
         <!-- Bottom Nav -->
@@ -284,10 +288,7 @@
     <div class="screen" id="screen-code-entry">
       <div class="code-entry-screen">
         <!-- In-call bar -->
-        <div class="in-call-bar">
-          <div class="in-call-dot"></div>
-          <span>Llamada en curso</span>
-        </div>
+        <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
         <!-- Header -->
         <div class="code-header">
           <button class="code-header-btn" onclick="showScreen('screen-bcp-home')">
@@ -337,10 +338,7 @@
     <!-- ============ SCREEN 7: SUCCESS ============ -->
     <div class="screen" id="screen-success">
       <div class="result-screen success-screen">
-        <div class="in-call-bar">
-          <div class="in-call-dot"></div>
-          <span>Llamada en curso</span>
-        </div>
+        <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
         <div class="code-header" style="background:#4CAF50">
           <button class="code-header-btn" onclick="resetDemo()">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="15,18 9,12 15,6"/></svg>
@@ -389,7 +387,7 @@
 
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=5"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});

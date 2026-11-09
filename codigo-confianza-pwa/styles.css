@@ -71,8 +71,10 @@ html, body {
 }
 
 .bcp-logo-large {
-  width: 160px;
-  height: auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  object-fit: contain;
   margin-bottom: 8px;
 }
 
@@ -219,9 +221,11 @@ html, body {
   flex-shrink: 0;
 }
 
-.push-icon-bcp svg {
-  width: 16px;
-  height: 16px;
+.push-icon-bcp img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: contain;
 }
 
 .push-app-name {
@@ -248,37 +252,6 @@ html, body {
   color: var(--text-secondary);
   line-height: 1.5;
   margin-bottom: 14px;
-}
-
-.push-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.push-btn {
-  flex: 1;
-  padding: 12px 16px;
-  border: none;
-  border-radius: 12px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.1s ease;
-}
-
-.push-btn:active {
-  transform: scale(0.96);
-}
-
-.push-btn-accept {
-  background: var(--bcp-blue);
-  color: white;
-}
-
-.push-btn-decline {
-  background: #E8EAF0;
-  color: var(--text-primary);
 }
 
 /* ====== CALL SCREEN ====== */
@@ -470,6 +443,58 @@ html, body {
   color: rgba(255,255,255,0.5);
 }
 
+.advisor-speaking-tag {
+  width: fit-content;
+  margin-left: auto;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.4);
+  color: #8FE39A;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.speaking-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 12px;
+}
+
+.speaking-bar {
+  display: block;
+  width: 2.5px;
+  background: #4CAF50;
+  border-radius: 2px;
+  animation: speakingBounce 0.8s ease-in-out infinite;
+}
+
+.speaking-bar:nth-child(1) {
+  height: 4px;
+  animation-delay: 0s;
+}
+
+.speaking-bar:nth-child(2) {
+  height: 8px;
+  animation-delay: 0.15s;
+}
+
+.speaking-bar:nth-child(3) {
+  height: 5px;
+  animation-delay: 0.3s;
+}
+
+@keyframes speakingBounce {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1.4); }
+}
+
 .advisor-speech {
   font-size: 14px;
   color: rgba(255,255,255,0.8);
@@ -498,35 +523,6 @@ html, body {
   font-size: 32px;
   font-weight: 900;
   color: var(--bcp-orange);
-}
-
-.btn-open-app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bcp-blue);
-  color: white;
-  border: none;
-  border-radius: var(--radius-btn);
-  padding: 16px 32px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 0 24px;
-  width: calc(100% - 48px);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.btn-open-app.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.btn-open-app:active {
-  transform: scale(0.96);
 }
 
 .call-controls {
@@ -575,9 +571,12 @@ html, body {
 .in-call-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
-  background: var(--success);
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  background: #247A3D;
   padding: 6px 16px;
   padding-top: calc(6px + var(--safe-top));
   font-size: 12px;
@@ -586,13 +585,7 @@ html, body {
   cursor: pointer;
 }
 
-.in-call-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: white;
-  animation: pulse-dot 1.5s infinite;
-}
+
 
 .bcp-header {
   background: linear-gradient(135deg, #001B5E 0%, #002A8D 50%, #0050A0 100%);
@@ -616,8 +609,22 @@ html, body {
 }
 
 .bcp-logo-header {
-  width: 70px;
-  height: auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.bcp-logo-button {
+  width: 28px;
+  height: 28px;
+  margin-right: 8px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .speaking-bar { animation: none; }
 }
 
 .bcp-greeting {
@@ -746,26 +753,15 @@ html, body {
 .bcp-icon-new {
   background: linear-gradient(135deg, #E8EEF8 0%, #D4E0F5 100%);
   box-shadow: 0 0 0 2.5px var(--bcp-orange);
-  animation: icon-glow 2s ease-in-out infinite;
+  animation: codigo-heartbeat 1.8s ease-in-out infinite;
 }
 
-@keyframes icon-glow {
-  0%, 100% { box-shadow: 0 0 0 2.5px var(--bcp-orange), 0 0 0 4px rgba(243,112,33,0); }
-  50% { box-shadow: 0 0 0 2.5px var(--bcp-orange), 0 0 0 8px rgba(243,112,33,0.15); }
+@keyframes codigo-heartbeat {
+  0%, 45%, 100% { transform: scale(1); box-shadow: 0 0 0 2.5px var(--bcp-orange), 0 0 0 4px rgba(243,112,33,0); }
+  14%, 32% { transform: scale(1.16); box-shadow: 0 0 0 2.5px var(--bcp-orange), 0 0 0 11px rgba(243,112,33,0.18); }
+  23% { transform: scale(1.04); }
 }
 
-.new-badge {
-  position: absolute;
-  top: 0;
-  right: 8px;
-  background: var(--bcp-orange);
-  color: white;
-  font-size: 9px;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 6px;
-  letter-spacing: 0.5px;
-}
 
 /* ====== BOTTOM NAV ====== */
 .bcp-bottom-nav {
@@ -1110,4 +1106,51 @@ html, body {
 
 .code-box.pop {
   animation: digitPop 0.15s ease-out;
+}
+
+/* Short narrative transitions for the guided demo. */
+.demo-transition {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px;
+  background: #10182C;
+  color: white;
+  text-align: center;
+}
+.demo-transition h2 { font-size: 24px; line-height: 1.25; }
+.demo-transition p { color: #CBD3E3; font-size: 15px; }
+.time-passage-icon { width: 56px; height: 56px; color: #A8C9FF; }
+.demo-app-tap { position: relative; margin-bottom: 12px; }
+.demo-app-tap img { display: block; border-radius: 22px; animation: app-press 2s ease-in-out both; }
+.demo-tap-ring { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; border: 3px solid white; border-radius: 50%; background: #ffffff44; animation: app-tap 2s ease-out both; }
+@keyframes app-press { 0%, 25%, 65%, 100% { transform: scale(1); } 45% { transform: scale(.92); } }
+@keyframes app-tap { 0%, 20% { opacity: 0; transform: scale(1.5); } 40%, 55% { opacity: 1; transform: scale(1); } 85%, 100% { opacity: 0; transform: scale(1.5); } }
+.return-to-app { background: var(--bcp-blue); color: white; border: 0; border-radius: 24px; padding: 12px 24px; font: 600 14px Inter, sans-serif; cursor: pointer; margin-bottom: 16px; }
+.in-call-return { font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+.verification-guide { margin: 0 16px 14px; padding: 12px 14px; border-radius: 12px; background: #E8EEF8; color: var(--bcp-dark); }
+.verification-guide strong { font-size: 16px; }
+.verification-guide p { font-size: 12px; line-height: 1.5; margin-top: 4px; }
+.codigo-confianza-icon { background: transparent; border: 0; font-family: inherit; }
+.codigo-confianza-icon .bcp-icon-circle { margin-bottom: 6px; }
+.codigo-confianza-icon span { font-weight: 700; }
+.codigo-confianza-icon .codigo-tap-hint { color: #0055A5; font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
+button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .bcp-icon-new, .demo-app-tap img, .demo-tap-ring { animation: none; }
+  .demo-tap-ring { display: none; }
+}
+
+.bcp-app > :not(.bcp-icons-grid) { flex-shrink: 0; }
+.bcp-icons-grid { min-height: 0; overflow-y: auto; padding-top: 8px; padding-bottom: 12px; }
+@media (max-height: 740px) {
+  .bcp-header { padding-top: 12px; padding-bottom: 24px; }
+  .bcp-logo-header { width: 44px; height: 44px; }
+  .bcp-balance-card { padding: 12px 16px; margin-bottom: 10px; }
+  .verification-guide { margin-bottom: 8px; padding: 10px 12px; }
+  .bcp-icons-grid { row-gap: 2px; }
+  .bcp-icon-circle { width: 48px; height: 48px; }
 }

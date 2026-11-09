@@ -5,25 +5,47 @@ let currentBoxIndex = 0;
 let callTimerInterval = null;
 let callSeconds = 0;
 let isProcessing = false;
+const pendingTimeouts = new Set();
+
+// Cancel pending scene actions whenever the viewer leaves that screen.
+function schedule(callback, delay) {
+  const timer = setTimeout(() => {
+    pendingTimeouts.delete(timer);
+    callback();
+  }, delay);
+  pendingTimeouts.add(timer);
+  return timer;
+}
+
+function clearSceneActions() {
+  pendingTimeouts.forEach(clearTimeout);
+  pendingTimeouts.clear();
+}
 
 function showScreen(id) {
   const prev = document.getElementById(currentScreen);
   const next = document.getElementById(id);
   if (!next || id === currentScreen) return;
 
+  clearSceneActions();
   prev.classList.remove('active');
   next.classList.add('active');
   currentScreen = id;
 }
 
 function startDemo() {
+  resetDemo();
   updateClock();
   showScreen('screen-notification');
   const push = document.getElementById('push-notif');
   if (push) {
     push.classList.remove('show');
-    setTimeout(() => push.classList.add('show'), 800);
+    schedule(() => push.classList.add('show'), 800);
   }
+  schedule(() => {
+    showScreen('screen-time-passage');
+    schedule(acceptCall, 2200);
+  }, 6500);
 }
 
 function updateClock() {
@@ -42,38 +64,32 @@ function updateClock() {
 function acceptCall() {
   vibrate(50);
   showScreen('screen-call');
-  setTimeout(() => {
+  schedule(() => {
     const ring = document.querySelector('.call-btn-accept');
     if (ring) ring.style.animation = 'pulse-dot 0.8s infinite';
   }, 300);
-}
-
-function declineCall() {
-  vibrate(30);
-  showScreen('screen-welcome');
 }
 
 function answerCall() {
   vibrate(50);
   showScreen('screen-active-call');
   startCallTimer();
-
+  document.getElementById('return-to-app').hidden = true;
   const bubble = document.getElementById('advisor-bubble');
-  const btnApp = document.getElementById('btn-open-app');
-  if (bubble) {
-    bubble.classList.remove('show');
-    setTimeout(() => bubble.classList.add('show'), 1500);
-  }
-  if (btnApp) {
-    btnApp.classList.remove('show');
-    setTimeout(() => btnApp.classList.add('show'), 4000);
-  }
-
+  bubble.classList.remove('show');
+  document.querySelectorAll('.code-digit-reveal').forEach(el => el.textContent = '');
+  schedule(() => bubble.classList.add('show'), 1500);
   revealCode();
+  // Leave the completed code visible before simulating Rosa opening her app.
+  schedule(() => {
+    showScreen('screen-opening-app');
+    schedule(openBCPApp, 2000);
+  }, 5600);
 }
 
 function startCallTimer() {
   callSeconds = 0;
+  document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callTimerInterval = setInterval(() => {
     callSeconds++;
@@ -88,14 +104,14 @@ function revealCode() {
   const digits = ['1', '2', '3', '4'];
   const ids = ['cd1', 'cd2', 'cd3', 'cd4'];
   ids.forEach((id, i) => {
-    setTimeout(() => {
+    schedule(() => {
       const el = document.getElementById(id);
       if (el) {
         el.textContent = digits[i];
         el.style.transform = 'scale(1.15)';
         el.style.transition = 'transform 0.15s ease-out';
         vibrate(20);
-        setTimeout(() => {
+        schedule(() => {
           el.style.transform = 'scale(1)';
         }, 150);
       }
@@ -104,6 +120,7 @@ function revealCode() {
 }
 
 function openBCPApp() {
+  document.getElementById('return-to-app').hidden = false;
   vibrate(30);
   showScreen('screen-bcp-home');
 }
@@ -151,7 +168,7 @@ function pressKey(digit) {
 
   if (currentBoxIndex === 4) {
     isProcessing = true;
-    setTimeout(() => validateCode(), 300);
+    schedule(() => validateCode(), 300);
   }
 }
 
@@ -182,7 +199,7 @@ function validateCode() {
     });
     vibrate([50, 30, 50]);
 
-    setTimeout(() => {
+    schedule(() => {
       showScreen('screen-success');
     }, 600);
   } else {
@@ -201,7 +218,7 @@ function validateCode() {
     const errMsg = document.getElementById('code-error-msg');
     if (errMsg) errMsg.classList.add('visible');
 
-    setTimeout(() => {
+    schedule(() => {
       boxes.forEach(box => {
         box.textContent = '';
         box.className = 'code-box';
@@ -216,6 +233,9 @@ function validateCode() {
 }
 
 function resetDemo() {
+  clearSceneActions();
+  document.getElementById('return-to-app').hidden = true;
+  document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callSeconds = 0;
   enteredCode = '';
@@ -227,9 +247,6 @@ function resetDemo() {
     const el = document.getElementById(id);
     if (el) el.textContent = '';
   });
-
-  const btnApp = document.getElementById('btn-open-app');
-  if (btnApp) btnApp.classList.remove('show');
 
   const bubble = document.getElementById('advisor-bubble');
   if (bubble) bubble.classList.remove('show');
@@ -245,7 +262,7 @@ function showToast(msg) {
   if (!toast) return;
   toast.textContent = msg;
   toast.classList.add('visible');
-  setTimeout(() => toast.classList.remove('visible'), 1500);
+  schedule(() => toast.classList.remove('visible'), 1500);
 }
 
 function vibrate(pattern) {
