@@ -1,9 +1,10 @@
-const CORRECT_CODE = '1234';
+const CORRECT_CODE = '4870';
 let currentScreen = 'screen-welcome';
 let callTimerInterval = null;
 let callSeconds = 0;
 let isProcessing = false;
 const pendingTimeouts = new Set();
+const advisorAudio = new Audio('assets/audio/clara-codigo-confianza.mp3');
 
 // Cancel pending scene actions whenever the viewer leaves that screen.
 function schedule(callback, delay) {
@@ -161,13 +162,18 @@ function answerCall() {
   const bubble = document.getElementById('advisor-bubble');
   bubble.classList.remove('show');
   document.querySelectorAll('.code-digit-reveal').forEach(el => el.textContent = '');
-  schedule(() => bubble.classList.add('show'), 1500);
+  schedule(() => {
+    bubble.classList.add('show');
+    advisorAudio.currentTime = 0;
+    advisorAudio.play().catch(() => {});
+  }, 1500);
   revealCode();
-  // Let all four digits settle, then wait for the viewer to continue.
+  // Let the viewer continue right after the 4th digit settles, without waiting for
+  // Clara's "Repito..." (the audio keeps playing in the background either way).
   schedule(() => {
     document.getElementById('call-continue').disabled = false;
     document.getElementById('call-tap-hint').classList.add('show');
-  }, 3600);
+  }, 17300);
 }
 
 function continueFromAdvisor() {
@@ -176,6 +182,7 @@ function continueFromAdvisor() {
   button.disabled = true;
   button.hidden = true;
   document.getElementById('call-tap-hint').classList.remove('show');
+  advisorAudio.pause();
   showScreen('screen-opening-app');
   schedule(openBCPApp, 4000);
 }
@@ -194,8 +201,12 @@ function startCallTimer() {
 }
 
 function revealCode() {
-  const digits = ['1', '2', '3', '4'];
+  const digits = ['4', '8', '7', '0'];
   const ids = ['cd1', 'cd2', 'cd3', 'cd4'];
+  // Audio starts at 1500ms. Exact per-digit timestamps from ElevenLabs alignment
+  // (scripts/generate-audio.mjs), offset by that 1500ms audio start delay.
+  const AUDIO_START_DELAY = 1500;
+  const DIGIT_TIMES_MS = [13305, 13920, 14489, 15174];
   ids.forEach((id, i) => {
     schedule(() => {
       const el = document.getElementById(id);
@@ -208,7 +219,7 @@ function revealCode() {
           el.style.transform = 'scale(1)';
         }, 150);
       }
-    }, 2000 + i * 400);
+    }, AUDIO_START_DELAY + DIGIT_TIMES_MS[i]);
   });
 }
 
@@ -284,6 +295,8 @@ function confirmCodeMismatch() {
 
 function resetDemo() {
   clearSceneActions();
+  advisorAudio.pause();
+  advisorAudio.currentTime = 0;
   document.getElementById('call-continue').hidden = true;
   document.getElementById('call-continue').disabled = true;
   document.getElementById('call-tap-hint').classList.remove('show');
