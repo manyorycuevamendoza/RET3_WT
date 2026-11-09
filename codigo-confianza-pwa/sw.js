@@ -1,4 +1,4 @@
-const CACHE = 'codigo-confianza-v32';
+const CACHE = 'codigo-confianza-v33';
 const ASSETS = ['./', './index.html', './styles.css?v=36', './app.js?v=31', './assets/bcp-app.webp', './assets/audio/clara-codigo-confianza.mp3', './manifest.json'];
 
 self.addEventListener('install', e => {
