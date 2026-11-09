@@ -88,8 +88,8 @@ function answerCall() {
   // Leave the completed code visible before simulating Rosa opening her app.
   schedule(() => {
     showScreen('screen-opening-app');
-    schedule(openBCPApp, 2000);
-  }, 5600);
+    schedule(openBCPApp, 4000);
+  }, 7600);
 }
 
 function startCallTimer() {

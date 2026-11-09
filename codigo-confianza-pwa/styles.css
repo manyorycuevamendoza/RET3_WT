@@ -1224,8 +1224,8 @@ html, body {
   #screen-time-passage.active .time-hour-hand { animation: none; }
 }
 .demo-app-tap { position: relative; margin-bottom: 12px; }
-.demo-app-tap img { display: block; border-radius: 22px; animation: app-press 2s ease-in-out both; }
-.demo-tap-ring { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; border: 3px solid white; border-radius: 50%; background: #ffffff44; animation: app-tap 2s ease-out both; }
+.demo-app-tap img { display: block; border-radius: 22px; animation: app-press 4s ease-in-out both; }
+.demo-tap-ring { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; border: 3px solid white; border-radius: 50%; background: #ffffff44; animation: app-tap 4s ease-out both; }
 @keyframes app-press { 0%, 25%, 65%, 100% { transform: scale(1); } 45% { transform: scale(.92); } }
 @keyframes app-tap { 0%, 20% { opacity: 0; transform: scale(1.5); } 40%, 55% { opacity: 1; transform: scale(1); } 85%, 100% { opacity: 0; transform: scale(1.5); } }
 .return-to-app { background: var(--bcp-blue); color: white; border: 0; border-radius: 24px; padding: 12px 24px; font: 600 14px Inter, sans-serif; cursor: pointer; margin-bottom: 16px; }
