@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=29">
+  <link rel="stylesheet" href="styles.css?v=30">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -175,28 +175,19 @@
       </div>
     </div>
 
-    <!-- ============ SCREEN 5: BCP HOME ============ -->
+    <!-- ============ SCREEN 5: BCP BEFORE SIGN-IN ============ -->
     <div class="screen" id="screen-bcp-home">
-      <div class="bcp-app">
-        <!-- Active call indicator bar -->
+      <div class="bcp-app bcp-prelogin">
         <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
-        <!-- BCP Header -->
         <div class="bcp-header">
           <div class="bcp-header-content">
-            <div class="bcp-header-left">
-              <img src="assets/bcp-app.webp" class="bcp-logo-header" alt="BCP Banca Móvil" width="480" height="480">
-              <div class="bcp-greeting">¡Hola, Rosa!</div>
-            </div>
-            <div class="bcp-header-right">
-              <div class="bcp-header-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-              </div>
-              <div class="bcp-header-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              </div>
+            <img src="assets/bcp-app.webp" class="bcp-logo-header" alt="BCP Banca Móvil" width="480" height="480">
+            <div class="bcp-header-right" aria-hidden="true">
+              <div class="bcp-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 0c0 2-2.5 2-2.5 4M12 16v1"/></svg></div>
+              <div class="bcp-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M7 3H4a1 1 0 00-1 1c0 9.4 7.6 17 17 17a1 1 0 001-1v-3l-5-2-2 2a15 15 0 01-7-7l2-2-2-5z"/></svg></div>
+              <div class="bcp-header-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></div>
             </div>
           </div>
-          <!-- Llama illustration (simplified) -->
           <svg class="bcp-llama" viewBox="0 0 120 100" fill="none">
             <ellipse cx="60" cy="85" rx="30" ry="12" fill="rgba(255,255,255,0.08)"/>
             <path d="M55 80 L55 45 Q55 35 50 28 L48 25" stroke="rgba(255,255,255,0.15)" stroke-width="3" fill="none"/>
@@ -206,84 +197,57 @@
             <circle cx="65" cy="36" r="2" fill="rgba(255,255,255,0.2)"/>
           </svg>
         </div>
-
-        <!-- Balance Card -->
-        <div class="bcp-balance-card">
-          <div class="balance-label">Cuenta de ahorros</div>
-          <div class="balance-number">S/ 2,450.80</div>
-          <div class="balance-account">••••  ••••  ••••  4521</div>
-        </div>
-
-        <!-- Quick Actions Grid -->
-        <div class="verification-guide" id="verification-guide"><strong>Verifica tu llamada</strong><p>Toca <b>Código Confianza</b> e ingresa el código que te dio el asesor.</p></div>
-        <div class="bcp-section-title">Accesos rápidos</div>
+        <div class="bcp-prelogin-panel">
+          <div class="prelogin-greeting"><h2>Hola</h2><p>¡Qué bueno tenerte por aquí!</p></div>
+          <button type="button" class="bcp-icon-item codigo-confianza-icon prelogin-code-shortcut" onclick="openCodigoConfianza()" id="icon-codigo" aria-describedby="verification-guide">
+            <span class="bcp-icon-circle bcp-icon-new"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3L4 8v6c0 6 4.3 11.3 10 13 5.7-1.7 10-7 10-13V8L14 3z" stroke="white" stroke-width="2"/><polyline points="9,14 12.5,17.5 19,11" stroke="#F37021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="prelogin-shortcut-copy"><span>Código Confianza</span><small id="verification-guide">Comprueba quién te llama</small></span>
+            <span class="codigo-tap-hint">Toca aquí</span>
+          </button>
+          <div class="bcp-section-title">Accesos rápidos</div>
         <div class="bcp-icons-grid">
-          <div class="bcp-icon-item" onclick="showToast('Beneficios Qore')">
+          <button type="button" class="bcp-icon-item" onclick="showToast('Beneficios Qore')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><polygon points="14,2 17.5,9 25,10.5 19.5,16 21,24 14,20 7,24 8.5,16 3,10.5 10.5,9"/></svg>
             </div>
             <span>Beneficios Qore</span>
-          </div>
-          <div class="bcp-icon-item" onclick="showToast('Token Digital')">
+          </button>
+          <button type="button" class="bcp-icon-item" onclick="showToast('Token Digital')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><rect x="5" y="3" width="18" height="22" rx="3"/><circle cx="14" cy="14" r="4"/><line x1="14" y1="10" x2="14" y2="14"/></svg>
             </div>
             <span>Token Digital</span>
-          </div>
-          <div class="bcp-icon-item" onclick="showToast('Bloquear tarjeta')">
+          </button>
+          <button type="button" class="bcp-icon-item" onclick="showToast('Bloquear tarjeta')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><rect x="3" y="6" width="22" height="16" rx="3"/><line x1="3" y1="12" x2="25" y2="12"/><line x1="8" y1="18" x2="8" y2="18" stroke-width="3" stroke-linecap="round"/></svg>
             </div>
             <span>Bloquear tarjeta</span>
-          </div>
-          <div class="bcp-icon-item" onclick="showToast('Yapear a celular')">
+          </button>
+          <button type="button" class="bcp-icon-item" onclick="showToast('Yapear a celular')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><rect x="7" y="3" width="14" height="22" rx="3"/><circle cx="14" cy="20" r="1.5"/></svg>
             </div>
             <span>Yapear a celular</span>
-          </div>
-          <div class="bcp-icon-item" onclick="showToast('Pagar con QR')">
+          </button>
+          <button type="button" class="bcp-icon-item" onclick="showToast('Pagar con QR')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><rect x="3" y="3" width="9" height="9" rx="1"/><rect x="16" y="3" width="9" height="9" rx="1"/><rect x="3" y="16" width="9" height="9" rx="1"/><rect x="18" y="18" width="5" height="5" rx="1"/><line x1="16" y1="16" x2="16" y2="25"/><line x1="16" y1="16" x2="25" y2="16"/></svg>
             </div>
             <span>Pagar con QR</span>
-          </div>
-          <div class="bcp-icon-item" onclick="showToast('Pagar servicios')">
+          </button>
+          <button type="button" class="bcp-icon-item" onclick="showToast('Pagar servicios')">
             <div class="bcp-icon-circle">
               <svg viewBox="0 0 28 28" fill="none" stroke="#002A8D" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v16"/><path d="M4 4v18a2 2 0 0 0 2 2h16"/><line x1="10" y1="12" x2="18" y2="12"/><line x1="10" y1="16" x2="15" y2="16"/></svg>
             </div>
             <span>Pagar servicios</span>
-          </div>
-          <!-- NEW: Código Confianza -->
-          <button type="button" class="bcp-icon-item codigo-confianza-icon" onclick="openCodigoConfianza()" id="icon-codigo" aria-describedby="verification-guide">
-            <div class="bcp-icon-circle bcp-icon-new">
-              <svg viewBox="0 0 28 28" fill="none">
-                <path d="M14 3L4 8v6c0 7.1 4.3 13.3 10 15 5.7-1.7 10-7.9 10-15V8L14 3z" stroke="#002A8D" stroke-width="2" fill="rgba(0,42,141,0.08)"/>
-                <polyline points="9,14 12.5,17.5 19,11" stroke="#F37021" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <span>Código Confianza</span>
-            <span class="codigo-tap-hint">Toca aquí</span>
           </button>
         </div>
 
-        <!-- Bottom Nav -->
-        <div class="bcp-bottom-nav">
-          <div class="nav-item nav-active">
-            <svg viewBox="0 0 24 24" fill="#002A8D"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            <span>Inicio</span>
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="#999"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-            <span>Operaciones</span>
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="#999"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-            <span>Tarjetas</span>
-          </div>
-          <div class="nav-item">
-            <svg viewBox="0 0 24 24" fill="#999"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            <span>Perfil</span>
+          <div class="prelogin-signin" aria-label="Ingreso a Banca Móvil">
+            <div class="prelogin-card-selector"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18"/></svg><div><strong>Tarjeta de débito</strong><span>Selecciona tu tarjeta</span></div><span class="prelogin-selector-arrow" aria-hidden="true">⌄</span></div>
+            <div class="prelogin-password"><span>Clave de internet de 6 dígitos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <button type="button" class="prelogin-signin-button" disabled>Ingresar</button>
           </div>
         </div>
       </div>
@@ -416,7 +380,7 @@
 
   </div>
 
-  <script src="app.js?v=29"></script>
+  <script src="app.js?v=30"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});

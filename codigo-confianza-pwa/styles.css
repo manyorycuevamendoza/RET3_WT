@@ -756,12 +756,6 @@ html, body {
   .speaking-bar { animation: none; }
 }
 
-.bcp-greeting {
-  font-size: 22px;
-  font-weight: 700;
-  color: white;
-  margin-top: 8px;
-}
 
 .bcp-header-right {
   display: flex;
@@ -790,37 +784,6 @@ html, body {
   width: 120px;
   height: 100px;
   z-index: 1;
-}
-
-/* ====== BALANCE CARD ====== */
-.bcp-balance-card {
-  background: white;
-  margin: -16px 16px 16px;
-  padding: 18px 20px;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  position: relative;
-  z-index: 3;
-}
-
-.balance-label {
-  font-size: 12px;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-.balance-number {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin: 4px 0;
-  letter-spacing: -0.5px;
-}
-
-.balance-account {
-  font-size: 13px;
-  color: var(--text-secondary);
-  letter-spacing: 1px;
 }
 
 /* ====== ICONS GRID ====== */
@@ -891,36 +854,6 @@ html, body {
   23% { transform: scale(1.04); }
 }
 
-
-/* ====== BOTTOM NAV ====== */
-.bcp-bottom-nav {
-  display: flex;
-  background: white;
-  border-top: 1px solid #E8E8E8;
-  padding: 8px 0;
-  padding-bottom: calc(8px + var(--safe-bottom));
-}
-
-.nav-item {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  font-size: 10px;
-  color: #999;
-  cursor: pointer;
-  padding: 4px 0;
-}
-
-.nav-item svg {
-  width: 24px;
-  height: 24px;
-}
-
-.nav-active {
-  color: var(--bcp-dark);
-}
 
 /* ====== CODE ENTRY ====== */
 .code-entry-screen {
@@ -1314,9 +1247,6 @@ html, body {
 @keyframes app-tap { 0%, 20% { opacity: 0; transform: scale(1.5); } 40%, 55% { opacity: 1; transform: scale(1); } 85%, 100% { opacity: 0; transform: scale(1.5); } }
 .return-to-app { background: var(--bcp-blue); color: white; border: 0; border-radius: 24px; padding: 12px 24px; font: 600 14px Inter, sans-serif; cursor: pointer; margin-bottom: 16px; }
 .in-call-return { font-size: 11px; text-decoration: underline; text-underline-offset: 3px; }
-.verification-guide { margin: 0 16px 14px; padding: 12px 14px; border-radius: 12px; background: #E8EEF8; color: var(--bcp-dark); }
-.verification-guide strong { font-size: 16px; }
-.verification-guide p { font-size: 12px; line-height: 1.5; margin-top: 4px; }
 .codigo-confianza-icon { background: transparent; border: 0; font-family: inherit; }
 .codigo-confianza-icon .bcp-icon-circle { margin-bottom: 6px; }
 .codigo-confianza-icon span { font-weight: 700; }
@@ -1332,8 +1262,6 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 @media (max-height: 740px) {
   .bcp-header { padding-top: 12px; padding-bottom: 24px; }
   .bcp-logo-header { width: 44px; height: 44px; }
-  .bcp-balance-card { padding: 12px 16px; margin-bottom: 10px; }
-  .verification-guide { margin-bottom: 8px; padding: 10px 12px; }
   .bcp-icons-grid { row-gap: 2px; }
   .bcp-icon-circle { width: 48px; height: 48px; }
 }
@@ -1401,3 +1329,50 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 .success-details .detail-divider { background: #DCE4F2; }
 .success-state-value { padding: 4px 10px; border-radius: 20px; background: #E0E9FA; font-weight: 700; }
 .success-state-mark { color: var(--bcp-orange); }
+
+/* BCP entry screen before sign-in: no balances or personal account data. */
+.bcp-prelogin { background: var(--bcp-dark); }
+.bcp-prelogin .bcp-header { min-height: 124px; padding: 16px 20px 44px; background: linear-gradient(150deg, #0035BA, #002A8D 65%, #001B5E); }
+.bcp-prelogin .bcp-header-content { align-items: center; }
+.bcp-prelogin .bcp-logo-header { width: 56px; height: 56px; }
+.bcp-prelogin .bcp-header-right { gap: 8px; }
+.bcp-prelogin .bcp-header-icon { background: transparent; width: 30px; height: 30px; }
+.bcp-prelogin .bcp-llama { left: 12px; right: auto; bottom: -14px; }
+.bcp-app > .bcp-prelogin-panel { position: relative; z-index: 3; flex: 1; min-height: 0; overflow-y: auto; margin-top: -24px; padding: 20px 0 8px; border-radius: 26px 26px 0 0; background: white; }
+.prelogin-greeting { text-align: center; margin-bottom: 18px; color: var(--bcp-dark); }
+.prelogin-greeting h2 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+.prelogin-greeting p { color: #505B74; font-size: 15px; }
+.bcp-prelogin-panel .prelogin-code-shortcut { width: calc(100% - 40px); margin: 0 20px 18px; padding: 14px; flex-direction: row; gap: 12px; text-align: left; background: #F0F4FC; border: 1px solid #DCE5F5; }
+.prelogin-code-shortcut .bcp-icon-circle { width: 46px; height: 46px; flex-shrink: 0; margin-bottom: 0; background: var(--bcp-dark); }
+.prelogin-code-shortcut .prelogin-shortcut-copy { display: flex; flex-direction: column; gap: 4px; flex: 1; text-align: left; }
+.prelogin-code-shortcut .prelogin-shortcut-copy > span { color: var(--bcp-dark); font-size: 14px; text-align: left; font-weight: 700; }
+.prelogin-shortcut-copy small { color: #58617C; font-size: 11px; line-height: 1.4; font-weight: 500; }
+.prelogin-code-shortcut .codigo-tap-hint { flex-shrink: 0; font-size: 10px; }
+.bcp-prelogin-panel .bcp-section-title { font-size: 13px; padding-bottom: 8px; }
+.bcp-prelogin-panel .bcp-icons-grid { flex: none; overflow: visible; gap: 4px 0; padding: 8px 14px 12px; }
+.bcp-prelogin-panel .bcp-icons-grid .bcp-icon-item { border: 0; background: transparent; font-family: inherit; padding: 8px 4px; }
+.bcp-prelogin-panel .bcp-icons-grid .bcp-icon-circle { width: 50px; height: 50px; background: #FF7800; }
+.bcp-prelogin-panel .bcp-icons-grid .bcp-icon-circle svg { stroke: white; width: 25px; height: 25px; }
+.bcp-prelogin-panel .bcp-icons-grid .bcp-icon-item > span { max-width: 90px; font-size: 12px; font-weight: 400; line-height: 1.4; }
+.prelogin-signin { margin: 8px 20px 20px; display: flex; flex-direction: column; gap: 12px; }
+.prelogin-card-selector, .prelogin-password { display: flex; align-items: center; gap: 12px; padding: 14px; min-height: 58px; border: 1px solid #D7DBE3; border-radius: 12px; color: #58617C; }
+.prelogin-card-selector > svg, .prelogin-password svg { width: 22px; height: 22px; flex-shrink: 0; }
+.prelogin-card-selector > div { display: flex; flex: 1; flex-direction: column; gap: 3px; }
+.prelogin-card-selector strong { color: #192440; font-size: 13px; font-weight: 600; }
+.prelogin-card-selector > div span { font-size: 12px; }
+.prelogin-selector-arrow { color: var(--bcp-orange); font-size: 22px; }
+.prelogin-password { justify-content: space-between; font-size: 13px; }
+.prelogin-signin-button { min-height: 48px; border: 0; border-radius: 24px; background: #EDEFF3; color: #9A9FAB; font: 600 15px Inter, sans-serif; }
+@media (max-height: 700px) {
+  .bcp-prelogin .bcp-header { min-height: 100px; padding-top: 12px; padding-bottom: 36px; }
+  .bcp-prelogin .bcp-logo-header { width: 44px; height: 44px; }
+  .bcp-app > .bcp-prelogin-panel { padding-top: 16px; }
+  .prelogin-greeting { margin-bottom: 14px; }
+  .prelogin-greeting h2 { font-size: 24px; }
+  .bcp-prelogin-panel .prelogin-code-shortcut { margin-bottom: 14px; padding: 12px; }
+}
+@media (max-width: 350px) {
+  .bcp-prelogin-panel .prelogin-code-shortcut { gap: 10px; margin-left: 16px; margin-right: 16px; width: calc(100% - 32px); }
+  .prelogin-code-shortcut .prelogin-shortcut-copy > span { font-size: 13px; }
+  .prelogin-code-shortcut .codigo-tap-hint { font-size: 9px; }
+}
