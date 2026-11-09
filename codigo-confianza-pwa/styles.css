@@ -61,75 +61,136 @@ html, body {
 /* ====== WELCOME SCREEN ====== */
 .welcome-bg {
   height: 100%;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 32px;
+  padding: max(28px, var(--safe-top)) 24px max(24px, var(--safe-bottom));
   background: linear-gradient(160deg, #001B5E 0%, #002A8D 40%, #0050A0 100%);
   text-align: center;
 }
 
+.welcome-bg > * { flex-shrink: 0; }
+.welcome-eyebrow {
+  color: #D0E0FF;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  margin-top: auto;
+  margin-bottom: 22px;
+}
+
 .bcp-logo-large {
-  width: 120px;
-  height: 120px;
-  border-radius: 24px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
   object-fit: contain;
-  margin-bottom: 8px;
+  margin-bottom: 20px;
 }
 
 .welcome-title {
-  font-size: 32px;
+  font-size: clamp(26px, 7.4vw, 32px);
   font-weight: 900;
   color: white;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   letter-spacing: -0.02em;
 }
 
 .welcome-desc {
-  font-size: 15px;
-  color: rgba(255,255,255,0.75);
+  font-size: 17px;
+  color: #DAE6FF;
   line-height: 1.6;
-  max-width: 300px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
+}
+.welcome-desc strong { color: white; font-weight: 700; }
+
+.welcome-steps {
+  list-style: none;
+  width: 100%;
+  max-width: 310px;
+  padding: 8px 16px;
+  margin-bottom: 28px;
+  text-align: left;
+  background: #FFFFFF0F;
+  border: 1px solid #FFFFFF24;
+  border-radius: 16px;
+}
+.welcome-steps li { display: flex; align-items: center; gap: 12px; padding: 10px 0; color: white; font-size: 14px; font-weight: 500; }
+.welcome-steps li + li { border-top: 1px solid #FFFFFF1A; }
+.welcome-step-number { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: #FFFFFF; color: var(--bcp-dark); font-size: 13px; font-weight: 800; }
+.welcome-bg .btn-primary { max-width: 310px; padding: 17px 20px; }
+.welcome-bg .btn-primary span { margin-left: 8px; }
+.welcome-footer { font-size: 12px; line-height: 1.6; color: #C5D6F5; margin-top: 18px; margin-bottom: auto; }
+
+@media (max-height: 680px) {
+  .welcome-eyebrow { margin-bottom: 14px; }
+  .bcp-logo-large { width: 64px; height: 64px; margin-bottom: 14px; }
+  .welcome-title { margin-bottom: 10px; }
+  .welcome-desc { font-size: 15px; margin-bottom: 18px; }
+  .welcome-steps { margin-bottom: 20px; }
+  .welcome-steps li { padding: 8px 0; }
 }
 
-.welcome-features {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 40px;
+/* Motion follows the reading order; only the steps repeat, twice. */
+#screen-welcome.active .welcome-eyebrow,
+#screen-welcome.active .welcome-logo {
+  animation: welcome-fade 400ms ease-out both;
 }
-
-.welcome-feature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255,255,255,0.85);
-  font-size: 13px;
-  font-weight: 500;
+#screen-welcome.active .welcome-title,
+#screen-welcome.active .welcome-desc,
+#screen-welcome.active .welcome-steps,
+#screen-welcome.active .welcome-steps li,
+#screen-welcome.active .btn-primary {
+  animation: welcome-enter 450ms cubic-bezier(.22, 1, .36, 1) both;
 }
-
-.welcome-feature-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#screen-welcome.active .welcome-title { animation-delay: 120ms; }
+#screen-welcome.active .welcome-desc { animation-delay: 280ms; }
+#screen-welcome.active .welcome-steps { animation-delay: 400ms; }
+.welcome-steps li { position: relative; isolation: isolate; --step-delay: 1.6s; }
+#screen-welcome.active .welcome-steps li:nth-child(1) { animation-delay: 450ms; }
+#screen-welcome.active .welcome-steps li:nth-child(2) { animation-delay: 570ms; --step-delay: 3.1s; }
+#screen-welcome.active .welcome-steps li:nth-child(3) { animation-delay: 690ms; --step-delay: 4.6s; }
+.welcome-steps li::before {
+  content: "";
+  position: absolute;
+  inset: 3px -8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .12);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
 }
-
-.welcome-feature-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: white;
+#screen-welcome.active .welcome-steps li::before {
+  animation: welcome-step-light 6s ease-in-out var(--step-delay) 2;
 }
-
-.welcome-footer {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  margin-top: 24px;
+#screen-welcome.active .welcome-step-number {
+  animation: welcome-number-light 6s ease-in-out var(--step-delay) 2;
+}
+#screen-welcome.active .btn-primary { animation-name: welcome-fade; animation-delay: 950ms; }
+#screen-welcome.active .welcome-footer { animation: welcome-fade 400ms ease-out 1100ms both; }
+.welcome-bg .btn-primary span { display: inline-block; transition: transform 180ms ease-out; }
+@media (hover: hover) {
+  .welcome-bg .btn-primary:hover span { transform: translateX(3px); }
+}
+#screen-welcome .btn-primary:focus-visible { animation: none; }
+@keyframes welcome-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes welcome-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes welcome-step-light {
+  0%, 25%, 100% { opacity: 0; }
+  5%, 20% { opacity: 1; }
+}
+@keyframes welcome-number-light {
+  0%, 25%, 100% { box-shadow: 0 0 0 0 rgba(243, 112, 33, 0); }
+  5%, 20% { box-shadow: 0 0 0 4px rgba(243, 112, 33, .4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #screen-welcome.active .welcome-bg *,
+  #screen-welcome.active .welcome-steps li::before { animation: none !important; transition: none !important; }
+  .welcome-bg .btn-primary:hover span { transform: none; }
 }
 
 /* ====== BUTTONS ====== */
@@ -194,13 +255,38 @@ html, body {
   padding: 16px;
   box-shadow: var(--shadow-elevated);
   opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
 }
 
 .push-notification.show {
   opacity: 1;
-  transform: translateY(0);
+  visibility: visible;
+}
+
+/* A single arrival, two soft emphasis pulses, then a quiet reading state. */
+#screen-notification.active .lockscreen-time { animation: notification-clock-in 400ms ease-out backwards; }
+#screen-notification.active .lockscreen-date { animation: notification-clock-in 400ms ease-out 100ms backwards; }
+#screen-notification.active .push-notification.show {
+  animation: notification-arrival 650ms cubic-bezier(.22, 1, .36, 1) backwards,
+    notification-emphasis 1400ms ease-in-out 650ms 2;
+}
+.lockscreen { transition: opacity 350ms ease, transform 350ms ease; }
+.lockscreen.notification-departing { opacity: 0; transform: translateY(-8px); }
+@keyframes notification-clock-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes notification-arrival {
+  from { opacity: 0; transform: translateY(-36px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes notification-emphasis {
+  0%, 100% { box-shadow: var(--shadow-elevated), 0 0 0 0 rgba(137, 181, 255, 0); }
+  40% { box-shadow: var(--shadow-elevated), 0 0 0 5px rgba(137, 181, 255, .24); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #screen-notification.active .lockscreen-time,
+  #screen-notification.active .lockscreen-date,
+  #screen-notification.active .push-notification.show { animation: none; }
+  .lockscreen { transition: none; }
+  .lockscreen.notification-departing { opacity: 1; transform: none; }
 }
 
 .push-header {

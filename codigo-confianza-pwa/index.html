@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=10">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -21,33 +21,19 @@
     <!-- ============ SCREEN 1: WELCOME ============ -->
     <div class="screen active" id="screen-welcome">
       <div class="welcome-bg">
+        <p class="welcome-eyebrow">Prototipo de experiencia para BCP</p>
         <div class="welcome-logo">
           <img src="assets/bcp-app.webp" class="bcp-logo-large" alt="BCP Banca Móvil" width="480" height="480">
         </div>
         <h1 class="welcome-title">Código Confianza</h1>
-        <p class="welcome-desc">Verifica que quien te llama es realmente el BCP.<br>Sin compartir datos. Sin riesgo.</p>
-        <div class="welcome-features">
-          <div class="welcome-feature">
-            <div class="welcome-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#002A8D" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <span>Seguro</span>
-          </div>
-          <div class="welcome-feature">
-            <div class="welcome-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#002A8D" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <span>Simple</span>
-          </div>
-          <div class="welcome-feature">
-            <div class="welcome-feature-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#002A8D" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <span>Rápido</span>
-          </div>
-        </div>
-        <button class="btn-primary btn-large" onclick="startDemo()">Iniciar Demo</button>
-        <p class="welcome-footer">Prototipo — Hackathon Women in Tech 2026</p>
+        <p class="welcome-desc">El asesor te dice un código.<br><strong>Tú lo verificas en tu app.</strong></p>
+        <ol class="welcome-steps" aria-label="Cómo funciona Código Confianza">
+          <li><span class="welcome-step-number" aria-hidden="true">1</span><span>Te contamos cuándo te llamaremos</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">2</span><span>El asesor te dice un código</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">3</span><span>Tú lo escribes en tu app BCP</span></li>
+        </ol>
+        <button class="btn-primary btn-large" onclick="startDemo()">Ver cómo funciona <span aria-hidden="true">→</span></button>
+        <p class="welcome-footer">Una demo con Rosa<br>Women in Tech 2026</p>
       </div>
     </div>
 
@@ -389,7 +375,7 @@
 
   </div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=10"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});

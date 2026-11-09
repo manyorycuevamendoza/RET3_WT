@@ -36,12 +36,17 @@ function showScreen(id) {
 function startDemo() {
   resetDemo();
   updateClock();
+  document.querySelector('.lockscreen').classList.remove('notification-departing');
   showScreen('screen-notification');
   const push = document.getElementById('push-notif');
   if (push) {
     push.classList.remove('show');
-    schedule(() => push.classList.add('show'), 800);
+    schedule(() => {
+      push.classList.add('show');
+      vibrate(30);
+    }, 800);
   }
+  schedule(() => document.querySelector('.lockscreen').classList.add('notification-departing'), 6100);
   schedule(() => {
     showScreen('screen-time-passage');
     schedule(acceptCall, 2200);
