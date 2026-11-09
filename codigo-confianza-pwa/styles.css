@@ -1546,9 +1546,10 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
   padding: 16px;
   padding-bottom: max(16px, var(--safe-bottom));
   background: #1F2C34;
+  display: flex;
+  justify-content: center;
 }
 
 .wa-footer .btn-primary {
-  width: 100%;
   background: var(--bcp-blue);
 }
