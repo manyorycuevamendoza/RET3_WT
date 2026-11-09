@@ -260,11 +260,11 @@ function revealConfidenceCode() {
     }, i * 220);
   });
 
-  // Tras un momento para leerlo y compararlo con la voz de Clara, queda verificado.
+  // Tras un momento para leerlo y compararlo con la voz de Clara, los recuadros lo
+  // confirman en silencio — Rosa ya sabe que es Clara y sigue la llamada, sin pantallas extra.
   schedule(() => {
     document.querySelectorAll('.code-box').forEach(box => box.classList.add('success'));
     vibrate([50, 30, 50]);
-    schedule(() => showScreen('screen-success'), 500);
   }, digits.length * 220 + 1100);
 }
 
