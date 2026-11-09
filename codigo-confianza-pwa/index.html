@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=28">
+  <link rel="stylesheet" href="styles.css?v=29">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -344,7 +344,12 @@
       <div class="call-result-screen">
         <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
         <div class="call-result-content">
-          <svg class="call-result-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="#FFF0EF"/><path d="M32 17v18" stroke="#C83229" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="45" r="2.5" fill="#C83229"/></svg>
+          <svg class="call-result-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="29" fill="#FFF0EF"/>
+            <circle class="warning-halo" cx="32" cy="32" r="26" stroke="#C83229" stroke-width="1.5"/>
+            <path class="warning-symbol" pathLength="1" d="M32 17v18" stroke="#C83229" stroke-width="4" stroke-linecap="round"/>
+            <circle class="warning-dot" cx="32" cy="45" r="2.5" fill="#C83229"/>
+          </svg>
           <p class="call-result-label">Llamada sin verificar</p>
           <h2 id="unverified-title" tabindex="-1">El código no coincide</h2>
           <p class="call-result-message">No pudimos confirmar que la llamada sea del BCP. Vuelve a escribir el código. <strong>Si vuelve a fallar, cuelga la llamada.</strong></p>
@@ -411,7 +416,7 @@
 
   </div>
 
-  <script src="app.js?v=28"></script>
+  <script src="app.js?v=29"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
