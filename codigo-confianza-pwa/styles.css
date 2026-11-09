@@ -1343,8 +1343,7 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 .code-instruction { margin-bottom: 10px; }
 .code-dynamic-note { text-align: center; color: #58617C; font-size: 13px; line-height: 1.5; margin: 0 24px 20px; }
 .code-dynamic-note strong { display: block; color: var(--bcp-dark); font-weight: 700; }
-.code-dynamic-note span, .code-dynamic-note small { display: block; }
-.code-dynamic-note small { margin-top: 3px; font-size: 11px; }
+.code-dynamic-note span { display: block; }
 @media (max-height: 700px) {
   .code-entry-screen .code-shield-icon { margin: 14px 0 10px; }
   .code-entry-screen .code-shield-icon svg { width: 40px; height: 40px; }
