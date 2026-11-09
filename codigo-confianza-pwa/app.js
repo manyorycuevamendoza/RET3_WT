@@ -2,6 +2,8 @@ const CORRECT_CODE = '4870';
 let currentScreen = 'screen-welcome';
 let callTimerInterval = null;
 let callSeconds = 0;
+let codeExpiryInterval = null;
+const CODE_EXPIRY_SECONDS = 60;
 const pendingTimeouts = new Set();
 const advisorAudio = new Audio('assets/audio/clara-codigo-confianza.mp3');
 
@@ -242,7 +244,41 @@ function openCodigoConfianza() {
   const codeBoxes = document.getElementById('code-boxes');
   if (codeBoxes) codeBoxes.classList.remove('shake');
 
-  navigateWithinBCP('screen-code-entry', revealConfidenceCode);
+  navigateWithinBCP('screen-code-entry', () => {
+    revealConfidenceCode();
+    startCodeExpiry();
+  });
+}
+
+function startCodeExpiry() {
+  clearInterval(codeExpiryInterval);
+
+  let secondsLeft = CODE_EXPIRY_SECONDS;
+  const label = document.getElementById('code-expiry');
+  const secondsEl = document.getElementById('code-expiry-seconds');
+  if (label) label.classList.remove('urgent', 'expired');
+  if (secondsEl) secondsEl.textContent = secondsLeft;
+
+  codeExpiryInterval = setInterval(() => {
+    secondsLeft--;
+
+    if (secondsLeft <= 0) {
+      clearInterval(codeExpiryInterval);
+      if (label) {
+        label.classList.remove('urgent');
+        label.classList.add('expired');
+        label.textContent = 'Código expirado — vuelve a la llamada';
+      }
+      document.querySelectorAll('.code-box').forEach(box => {
+        box.classList.remove('success');
+        box.classList.add('expired');
+      });
+      return;
+    }
+
+    if (secondsEl) secondsEl.textContent = secondsLeft;
+    if (label && secondsLeft <= 10) label.classList.add('urgent');
+  }, 1000);
 }
 
 function revealConfidenceCode() {
@@ -285,6 +321,13 @@ function resetDemo() {
   document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callSeconds = 0;
+  clearInterval(codeExpiryInterval);
+
+  const expiryLabel = document.getElementById('code-expiry');
+  if (expiryLabel) {
+    expiryLabel.classList.remove('urgent', 'expired');
+    expiryLabel.innerHTML = 'Expira en <span id="code-expiry-seconds">' + CODE_EXPIRY_SECONDS + '</span>s';
+  }
 
   const revealDigits = ['cd1','cd2','cd3','cd4'];
   revealDigits.forEach(id => {
