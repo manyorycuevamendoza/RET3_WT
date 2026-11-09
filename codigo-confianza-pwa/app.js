@@ -6,6 +6,7 @@ let callTimerInterval = null;
 let callSeconds = 0;
 let isProcessing = false;
 const pendingTimeouts = new Set();
+const advisorAudio = new Audio('assets/audio/clara-codigo-confianza.mp3');
 
 // Cancel pending scene actions whenever the viewer leaves that screen.
 function schedule(callback, delay) {
@@ -160,7 +161,11 @@ function answerCall() {
   const bubble = document.getElementById('advisor-bubble');
   bubble.classList.remove('show');
   document.querySelectorAll('.code-digit-reveal').forEach(el => el.textContent = '');
-  schedule(() => bubble.classList.add('show'), 1500);
+  schedule(() => {
+    bubble.classList.add('show');
+    advisorAudio.currentTime = 0;
+    advisorAudio.play().catch(() => {});
+  }, 1500);
   revealCode();
   // Let all four digits settle, then wait for the viewer to continue.
   schedule(() => {
@@ -320,6 +325,8 @@ function correctCallCode() {
 
 function resetDemo() {
   clearSceneActions();
+  advisorAudio.pause();
+  advisorAudio.currentTime = 0;
   document.getElementById('call-continue').hidden = true;
   document.getElementById('call-continue').disabled = true;
   document.getElementById('call-tap-hint').classList.remove('show');
