@@ -238,13 +238,7 @@ function validateCode() {
 }
 
 function correctCallCode() {
-  // Keep the entered digits so Rosa can correct a typing error with delete.
-  isProcessing = false;
-  document.querySelectorAll('.code-box').forEach(box => {
-    box.className = 'code-box filled';
-  });
-  document.getElementById('code-entry-hint').textContent = 'Usa la tecla de borrar para corregir el código.';
-  showScreen('screen-code-entry');
+  openCodigoConfianza();
 }
 
 function resetDemo() {
