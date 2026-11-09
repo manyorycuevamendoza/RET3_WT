@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=23">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -312,6 +312,7 @@
           </svg>
         </div>
         <div class="code-instruction">Escribe el código que te dijo el asesor</div>
+        <p class="code-dynamic-note"><strong>Código dinámico</strong><span>Un código distinto para cada llamada.</span><small>Simulado en esta demo.</small></p>
         <!-- Code boxes -->
         <div class="code-boxes" id="code-boxes">
           <div class="code-box" id="box-0"></div>
@@ -415,7 +416,7 @@
 
   </div>
 
-  <script src="app.js?v=22"></script>
+  <script src="app.js?v=23"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
