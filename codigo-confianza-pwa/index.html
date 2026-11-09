@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -56,10 +56,17 @@
     </div>
 
     <div class="screen" id="screen-time-passage">
-      <div class="demo-transition" role="status">
-        <svg class="time-passage-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 12v12l8 5"/></svg>
+      <div class="demo-transition time-passage-content" role="status">
+        <svg class="time-passage-icon" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+          <circle cx="40" cy="40" r="39" fill="#FFFFFF06"/>
+          <circle cx="40" cy="40" r="30" stroke="currentColor" stroke-width="2"/>
+          <path d="M40 14v3M66 40h-3M40 66v-3M14 40h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+          <path class="time-hour-hand" d="M40 40l12 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          <path class="time-minute-hand" d="M40 40V21" stroke="#F8A362" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="40" cy="40" r="3" fill="currentColor"/>
+        </svg>
         <h2>5 minutos después</h2>
-        <p>Rosa recibe la llamada</p>
+        <p>Suena el celular de Rosa.</p>
       </div>
     </div>
 
@@ -375,7 +382,7 @@
 
   </div>
 
-  <script src="app.js?v=10"></script>
+  <script src="app.js?v=11"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});

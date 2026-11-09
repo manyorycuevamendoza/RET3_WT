@@ -1207,7 +1207,22 @@ html, body {
 }
 .demo-transition h2 { font-size: 24px; line-height: 1.25; }
 .demo-transition p { color: #CBD3E3; font-size: 15px; }
-.time-passage-icon { width: 56px; height: 56px; color: #A8C9FF; }
+.time-passage-icon { width: 96px; height: 96px; color: #A8C9FF; margin-bottom: 8px; }
+#screen-time-passage { background: #10182C; }
+.time-hour-hand, .time-minute-hand { transform-origin: 40px 40px; }
+.time-minute-hand { transform: rotate(30deg); }
+.time-hour-hand { transform: rotate(2.5deg); }
+#screen-time-passage.active .time-passage-content { animation: time-scene 2200ms linear both; }
+#screen-time-passage.active .time-minute-hand { animation: five-minutes 900ms cubic-bezier(.4, 0, .2, 1) 250ms backwards; }
+#screen-time-passage.active .time-hour-hand { animation: hour-advance 900ms cubic-bezier(.4, 0, .2, 1) 250ms backwards; }
+@keyframes five-minutes { from { transform: rotate(0); } to { transform: rotate(30deg); } }
+@keyframes hour-advance { from { transform: rotate(0); } to { transform: rotate(2.5deg); } }
+@keyframes time-scene { 0%, 100% { opacity: 0; } 12%, 93% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  #screen-time-passage.active .time-passage-content,
+  #screen-time-passage.active .time-minute-hand,
+  #screen-time-passage.active .time-hour-hand { animation: none; }
+}
 .demo-app-tap { position: relative; margin-bottom: 12px; }
 .demo-app-tap img { display: block; border-radius: 22px; animation: app-press 2s ease-in-out both; }
 .demo-tap-ring { position: absolute; right: -10px; bottom: -10px; width: 44px; height: 44px; border: 3px solid white; border-radius: 50%; background: #ffffff44; animation: app-tap 2s ease-out both; }
