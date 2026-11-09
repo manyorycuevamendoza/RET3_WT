@@ -300,7 +300,14 @@ html, body {
   display: flex;
   gap: 80px;
   margin-top: auto;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
+}
+
+.call-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .call-btn {
@@ -332,20 +339,11 @@ html, body {
   background: var(--error);
 }
 
-.call-labels-row {
-  display: flex;
-  gap: 50px;
-  margin-top: -88px;
-  margin-bottom: 70px;
-  width: 100%;
-  justify-content: center;
-}
-
 .call-action-label {
   font-size: 13px;
   font-weight: 500;
-  width: 72px;
   text-align: center;
+  white-space: nowrap;
 }
 
 /* ====== ACTIVE CALL ====== */

@@ -1,159 +1,86 @@
 {
   "version": 1,
   "historyId": "dd5fa474-8468-4dd9-b88c-aff1ad80773c",
-  "currentRevision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
+  "currentRevision": null,
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
-      "hash": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/1a/1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+      "hash": "368f4f17584a6fb32f0263de3dedd45192fb471918ba2547b42db3e1edf89fdb",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\36\\368f4f17584a6fb32f0263de3dedd45192fb471918ba2547b42db3e1edf89fdb"
     },
     "CLAUDE.md": {
-      "hash": "1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/1a/1a68041fc901ff835682a2a8d6f63c96dbb0b9eef8fb0971e97a79eaf69303d3"
+      "hash": "368f4f17584a6fb32f0263de3dedd45192fb471918ba2547b42db3e1edf89fdb",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\36\\368f4f17584a6fb32f0263de3dedd45192fb471918ba2547b42db3e1edf89fdb"
+    },
+    "PLAN-VIDEO-V2.md": {
+      "hash": "c6102aedf2cb8d7572c3997cf05338e76a0a4f64b62a9bb00d4729b585134d0c",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\c6\\c6102aedf2cb8d7572c3997cf05338e76a0a4f64b62a9bb00d4729b585134d0c"
     },
     "SPEC.md": {
-      "hash": "a1d4dc87d95cf483db8624f82c9aa5ca0566dafc4b348bc580c7724dc42cb9ac",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/a1/a1d4dc87d95cf483db8624f82c9aa5ca0566dafc4b348bc580c7724dc42cb9ac"
+      "hash": "8a1c6c6ab5e9bd6adf09cc7652346be9fe22eb15dbd584e96734d0b692bc3968",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\8a\\8a1c6c6ab5e9bd6adf09cc7652346be9fe22eb15dbd584e96734d0b692bc3968"
     },
     "STORYLINES.md": {
-      "hash": "93600e87f3709f78f37e08dae31e3922cfb3df8645310823dd5236da1827d514",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/93/93600e87f3709f78f37e08dae31e3922cfb3df8645310823dd5236da1827d514"
+      "hash": "a7aef094a41069fe404330400ae397e9277f37f76b78186fcc5d8c15b1bb098e",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\a7\\a7aef094a41069fe404330400ae397e9277f37f76b78186fcc5d8c15b1bb098e"
     },
     "compositions/cierre.html": {
-      "hash": "721dbac6f030b3a3f2118f487ad5fe1a2949a23fe73a355ae39da54e5ae17dea",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/72/721dbac6f030b3a3f2118f487ad5fe1a2949a23fe73a355ae39da54e5ae17dea"
+      "hash": "12d1908b396855bc7fb9868fd004a06b8f50de68babd343088e136cbf49b49db",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\12\\12d1908b396855bc7fb9868fd004a06b8f50de68babd343088e136cbf49b49db"
     },
     "compositions/codigo-voz.html": {
-      "hash": "4d1df8efdb05a23b6b155592ee1e24d04cd285cb968bd8358356d8095b752f11",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/4d/4d1df8efdb05a23b6b155592ee1e24d04cd285cb968bd8358356d8095b752f11"
+      "hash": "376af8f9796cd3a485ffa659ba5b87e2b2d2e96f34d1f134552700910798246a",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\37\\376af8f9796cd3a485ffa659ba5b87e2b2d2e96f34d1f134552700910798246a"
     },
     "compositions/error.html": {
-      "hash": "1b1774e97510d2f3fd119ebc0bb4b8a656335ea0d34c84ce1722ba8e472bab47",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/1b/1b1774e97510d2f3fd119ebc0bb4b8a656335ea0d34c84ce1722ba8e472bab47"
+      "hash": "6f67259a6a4c88cc9061038c14dcada8a8f6a9d1be5bead5274bf2746578aaa1",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\6f\\6f67259a6a4c88cc9061038c14dcada8a8f6a9d1be5bead5274bf2746578aaa1"
     },
     "compositions/hook.html": {
-      "hash": "62c697f3ff15220962efa21595163f46701731140a980da12ed5d688b1df589a",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/62/62c697f3ff15220962efa21595163f46701731140a980da12ed5d688b1df589a"
+      "hash": "af0b4a242cb532cfc46fc3d5452d272d1f80fc13a48c02bdd183aabdf584b751",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\af\\af0b4a242cb532cfc46fc3d5452d272d1f80fc13a48c02bdd183aabdf584b751"
     },
     "compositions/ingreso.html": {
-      "hash": "b4edec56a275982e00fcaaa4d0535ab279292d93c31e6942e1a4a75ca26436b0",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/b4/b4edec56a275982e00fcaaa4d0535ab279292d93c31e6942e1a4a75ca26436b0"
+      "hash": "fcbf941e7946aab6a908d274342562f146df358270ead574169fe928ddb6bade",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\fc\\fcbf941e7946aab6a908d274342562f146df358270ead574169fe928ddb6bade"
     },
     "compositions/llamada.html": {
-      "hash": "85f753521cd49130e21113d845b12d5f407b4caa7a3d867936f180aa86a05ad6",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/85/85f753521cd49130e21113d845b12d5f407b4caa7a3d867936f180aa86a05ad6"
+      "hash": "ccb82a91b2a1c9ec04aa9fc66b18668ea2de98777eb6215170e483d5bbdea8de",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\cc\\ccb82a91b2a1c9ec04aa9fc66b18668ea2de98777eb6215170e483d5bbdea8de"
     },
     "compositions/push-codigo.html": {
-      "hash": "8c4ba9bf15be4cd917be85acdce34d690dcc75fd357eeba1d9fa9b21e9d60f82",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/8c/8c4ba9bf15be4cd917be85acdce34d690dcc75fd357eeba1d9fa9b21e9d60f82"
+      "hash": "be3468974d07157aa053e337a7b0fcd54f4988668002e939f5a6b5dcd00dba17",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\be\\be3468974d07157aa053e337a7b0fcd54f4988668002e939f5a6b5dcd00dba17"
     },
     "compositions/push-permiso.html": {
-      "hash": "a1057b3dd939dff3c8f0b4726264da958e1a55e9a3693ccd8bcc0d688b2fb220",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/a1/a1057b3dd939dff3c8f0b4726264da958e1a55e9a3693ccd8bcc0d688b2fb220"
+      "hash": "ec21da31c6aae65b76c571476248821b9b1569ffe35fdc4b804c9cf44ddd3344",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\ec\\ec21da31c6aae65b76c571476248821b9b1569ffe35fdc4b804c9cf44ddd3344"
     },
     "compositions/verificado.html": {
-      "hash": "495cce28acff61ea942e53d0fd0a9ed13a3e3696e2ed9c06cfd999fe3eb3a6e6",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/49/495cce28acff61ea942e53d0fd0a9ed13a3e3696e2ed9c06cfd999fe3eb3a6e6"
+      "hash": "0304d3669913148c51eb6c31f64d1722859b314aaa4b376f6629f59ff7d7ff9b",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\03\\0304d3669913148c51eb6c31f64d1722859b314aaa4b376f6629f59ff7d7ff9b"
     },
     "hyperframes.json": {
-      "hash": "35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/35/35a6d4ea79ebe911f0d81705f7aace5d8ff0316b745b0311d56af50c9c237cb7"
+      "hash": "687e5c4a0a6ff969a5f316158089fb408f0c2d8f989d19e47289f7aa34a18d24",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\68\\687e5c4a0a6ff969a5f316158089fb408f0c2d8f989d19e47289f7aa34a18d24"
     },
     "index.html": {
-      "hash": "4932a73053a401a4bfa53f5738c8f97812cb7b65d25757439b79626a2821b99f",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/49/4932a73053a401a4bfa53f5738c8f97812cb7b65d25757439b79626a2821b99f"
+      "hash": "483095806d81554552840276c44b3a35d034109cc31658883646d25f16dc8c89",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\48\\483095806d81554552840276c44b3a35d034109cc31658883646d25f16dc8c89"
     },
     "meta.json": {
-      "hash": "d39e4ddafb5a82328a7b2008d966151bb989c40913415bd9866361e26c883b1d",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/d3/d39e4ddafb5a82328a7b2008d966151bb989c40913415bd9866361e26c883b1d"
+      "hash": "1c10dc6bee9df6bd80665c1864948c2182a794d19865309daa8940144085389f",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\1c\\1c10dc6bee9df6bd80665c1864948c2182a794d19865309daa8940144085389f"
     },
     "package.json": {
-      "hash": "b666ee0c7cdb7e25edf6e9497e1ca078829fbf0cb246245a96523b37acab232d",
-      "content": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/b6/b666ee0c7cdb7e25edf6e9497e1ca078829fbf0cb246245a96523b37acab232d"
+      "hash": "36d5d3e95a1a51d2759343377a11f4c7af0e24adad183beee421e1257c9dc98b",
+      "content": "C:\\Users\\JAZMIN\\.cache\\hyperframes\\history\\dd5fa474-8468-4dd9-b88c-aff1ad80773c\\blobs\\36\\36d5d3e95a1a51d2759343377a11f4c7af0e24adad183beee421e1257c9dc98b"
     }
   },
-  "revisions": {
-    "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58": {
-      "actor": {
-        "kind": "outside",
-        "name": "Outside"
-      },
-      "label": "Changed outside the app",
-      "startedAt": 1794091479293,
-      "endedAt": 1794091479633,
-      "files": {
-        "compositions/cierre.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/e5/e59c36c1e1608a00083ef030fe9006c50fd49793c478d3a196bae8fb6294eb7f",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/72/721dbac6f030b3a3f2118f487ad5fe1a2949a23fe73a355ae39da54e5ae17dea"
-        },
-        "compositions/codigo-voz.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/a5/a54e90255a66ec845493cdc8147697c11278da9103e98c3cc0c35c7e2e659836",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/4d/4d1df8efdb05a23b6b155592ee1e24d04cd285cb968bd8358356d8095b752f11"
-        },
-        "compositions/error.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/b0/b0e9770ca26dbffb791391a660608e5eae24e61960c998b94ce7de6900e0b2df",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/1b/1b1774e97510d2f3fd119ebc0bb4b8a656335ea0d34c84ce1722ba8e472bab47"
-        },
-        "compositions/ingreso.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/e7/e7e564e03a8f2ca5e2d1da8631dda58b76e342cc3402a558ecbb688361060f03",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/b4/b4edec56a275982e00fcaaa4d0535ab279292d93c31e6942e1a4a75ca26436b0"
-        },
-        "compositions/llamada.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/3f/3f7fa0b7dc63c9c772c5abd1c86e9faf7566c9cafcb8c43abbd50bbffcc6d17d",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/85/85f753521cd49130e21113d845b12d5f407b4caa7a3d867936f180aa86a05ad6"
-        },
-        "compositions/push-codigo.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/93/9329186ed93573a72c7585b9e27f15e50327d467274924f9717b4f69ce37e54b",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/8c/8c4ba9bf15be4cd917be85acdce34d690dcc75fd357eeba1d9fa9b21e9d60f82"
-        },
-        "compositions/push-permiso.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/3f/3f5ae49e4c9160d52cbc47db6e6f28d1f306c62ba0f447f19f07b270b9ca50cf",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/a1/a1057b3dd939dff3c8f0b4726264da958e1a55e9a3693ccd8bcc0d688b2fb220"
-        },
-        "compositions/verificado.html": {
-          "before": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/d6/d6ab87bf357f8ff9a56fa47acc53ae6b81ef7836b12738df99accf63309d0bb2",
-          "after": "/home/manyory/.cache/hyperframes/history/dd5fa474-8468-4dd9-b88c-aff1ad80773c/blobs/49/495cce28acff61ea942e53d0fd0a9ed13a3e3696e2ed9c06cfd999fe3eb3a6e6"
-        }
-      }
-    }
-  },
+  "revisions": {},
   "checks": {
-    "latest": {
-      "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-      "id": "eb5e7c53-cbf3-4fc9-b559-455b1732a318"
-    },
-    "revisions": {
-      "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58": [
-        {
-          "id": "eb5e7c53-cbf3-4fc9-b559-455b1732a318",
-          "scope": "project",
-          "report": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/checks/eb5e7c53-cbf3-4fc9-b559-455b1732a318.json",
-          "metadata": {
-            "ok": true,
-            "browserSkipped": false,
-            "options": {
-              "samples": 9,
-              "atTransitions": false,
-              "maxIssues": 80,
-              "collapseStatic": true,
-              "tolerance": 2,
-              "timeout": 45000,
-              "contrast": true,
-              "strict": false,
-              "snapshots": false,
-              "browserGpuMode": "auto"
-            }
-          },
-          "createdAt": 1794091484906,
-          "contentHash": "ed79051ef15c3ba35ad635c35098b6ea7327442ae7e31f8a7f8ccdc1a3a406ad",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        }
-      ]
-    },
+    "latest": null,
+    "revisions": {},
     "unversioned": [
       {
         "id": "51de95f2-e0fc-4fa7-bd68-de4a3618816f",
@@ -185,214 +112,8 @@
     ]
   },
   "snapshots": {
-    "latest": {
-      "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-      "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-9"
-    },
-    "revisions": {
-      "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58": [
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-0",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-00-at-1s.png",
-          "time": 1,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519497,
-          "contentHash": "76294cef03616c427ce86cf40996999ee835178ee4f862f0fb48586cc9048942",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-1",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-01-at-6s.png",
-          "time": 6,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519497,
-          "contentHash": "087bb15fa3e8c9ebd8cfbbb20bab94cf5c1fa2bc5b882c27a9c2ba042aa22517",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-2",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-02-at-10s.png",
-          "time": 10,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519497,
-          "contentHash": "877f5c97e19a9d03d709834de9666e441776ad1e53c63026fa6b22db800dac75",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-3",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-03-at-14s.png",
-          "time": 14,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519497,
-          "contentHash": "9719303a016d6e15c9cf73b271db693b8c77f2bc810947e2bf650aa379a8bf37",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-4",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-04-at-19s.png",
-          "time": 19,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519497,
-          "contentHash": "4b5b3b499679c626590861356b844473c3bb7c1daa999ce55983e93ae162c28d",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-5",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-05-at-23s.png",
-          "time": 23,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519498,
-          "contentHash": "b2bc657b077ebada75819d7fd09663fae66142b114afedb0236e763ce3820178",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-6",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-06-at-27s.png",
-          "time": 27,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519498,
-          "contentHash": "0245f0338000cf7ea7599c6069e6e025012c233a4bd5c4cb8161759a857d7869",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-7",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-07-at-31s.png",
-          "time": 31,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519498,
-          "contentHash": "b5f7e48998b0957f93b3050b5b61177289428d9018d4d6777f926947e7aad75f",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-8",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-08-at-34s.png",
-          "time": 34,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519498,
-          "contentHash": "2350caf1d1501dcdd0b7c6158a5fc9777c88daf547f1a189f2b50f008bb5c433",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        },
-        {
-          "scope": "full",
-          "id": "6ad14db2-68cc-4960-aba5-eef108c27c00-9",
-          "image": "/home/manyory/Documentos/RET3_WT/codigo-confianza/.hyperframes/artifacts/snapshots/c206a971-bd8a-4c15-b508-214bee051ba1/frame-09-at-34.75s.png",
-          "time": 34.75,
-          "metadata": {
-            "width": 1920,
-            "height": 1080,
-            "zoomScale": 1,
-            "browserGpuMode": "auto",
-            "warnings": [],
-            "partial": false
-          },
-          "createdAt": 1794091519498,
-          "contentHash": "2350caf1d1501dcdd0b7c6158a5fc9777c88daf547f1a189f2b50f008bb5c433",
-          "revision": "51fdc3e0-e1c2-4d2c-8944-b5fa60b68c58",
-          "inputFingerprint": "165aaa1f08482916b0c64dbe32e358bcbc53a5aa15383ff907465825ad4b9a68",
-          "inputScope": "local-project-files",
-          "attribution": "recorded-revision"
-        }
-      ]
-    },
+    "latest": null,
+    "revisions": {},
     "unversioned": []
   }
 }
