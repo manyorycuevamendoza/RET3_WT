@@ -1194,13 +1194,6 @@ html, body {
   background: #E8E8E8;
 }
 
-.success-safe-msg {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #58617C;
-  font-weight: 600;
-}
 
 /* Confirm once, then leave the result still and readable. */
 .success-content { min-height: 0; overflow-y: auto; }
@@ -1215,11 +1208,8 @@ html, body {
 #screen-success.active .detail-row { animation: confirmation-enter 350ms cubic-bezier(.22, 1, .36, 1) 550ms backwards; }
 #screen-success.active .detail-row:nth-child(3) { animation-delay: 650ms; }
 #screen-success.active .detail-row:nth-child(5) { animation: confirmation-enter 350ms cubic-bezier(.22, 1, .36, 1) 750ms backwards, confirmation-state 650ms ease-out 950ms backwards; }
-#screen-success.active .success-safe-msg { animation: confirmation-fade 350ms ease-out 800ms backwards; }
 #screen-success.active .success-content > .btn-primary { animation: confirmation-fade 350ms ease-out 850ms backwards; }
 #screen-success.active .success-content > .btn-primary:focus-visible { animation: none; }
-.success-safe-msg { line-height: 1.5; text-align: center; }
-.success-safe-msg svg { flex-shrink: 0; }
 @keyframes confirmation-disc { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
 @keyframes confirmation-check { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes confirmation-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -1387,4 +1377,4 @@ button:focus-visible { outline: 3px solid var(--bcp-orange); outline-offset: 3px
 .success-details .detail-value { color: var(--bcp-dark); }
 .success-details .detail-divider { background: #DCE4F2; }
 .success-state-value { padding: 4px 10px; border-radius: 20px; background: #E0E9FA; font-weight: 700; }
-.success-state-mark, .success-safe-msg svg { color: var(--bcp-orange); }
+.success-state-mark { color: var(--bcp-orange); }
