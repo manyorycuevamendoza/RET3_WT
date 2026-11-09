@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -28,9 +28,9 @@
         <h1 class="welcome-title">Código Confianza</h1>
         <p class="welcome-desc"><strong>¿Es el BCP quien te llama?</strong><span>Antes de seguir, compruébalo en tu app.</span></p>
         <ol class="welcome-steps" aria-label="Cómo funciona Código Confianza">
-          <li><span class="welcome-step-number" aria-hidden="true">1</span><span>Sabes por qué te llamarán</span></li>
-          <li><span class="welcome-step-number" aria-hidden="true">2</span><span>Clara te dice tu código</span></li>
-          <li><span class="welcome-step-number" aria-hidden="true">3</span><span>Lo compruebas en tu app BCP</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">1</span><span>Sabes por qué te llaman</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">2</span><span>Clara dice el código</span></li>
+          <li><span class="welcome-step-number" aria-hidden="true">3</span><span>El cliente lo compara</span></li>
         </ol>
         <button class="btn-primary btn-large" onclick="startDemo()">Ver la demo con Rosa <span aria-hidden="true">→</span></button>
         <p class="welcome-footer">Women in Tech 2026</p>
@@ -341,7 +341,6 @@
           <div class="code-box" id="box-2"></div>
           <div class="code-box" id="box-3"></div>
         </div>
-        <p class="code-expiry" id="code-expiry">Expira en <span id="code-expiry-seconds">60</span>s</p>
         <button type="button" class="code-fraud-link" onclick="showFraudPreview()">¿No coincidió? Así se ve la alerta</button>
       </div>
     </div>
@@ -420,7 +419,7 @@
 
   </div>
 
-  <script src="app.js?v=36"></script>
+  <script src="app.js?v=37"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
