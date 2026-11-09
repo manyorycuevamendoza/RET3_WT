@@ -142,8 +142,7 @@ function openCodigoConfianza() {
     box.className = 'code-box';
   });
 
-  const errMsg = document.getElementById('code-error-msg');
-  if (errMsg) errMsg.classList.remove('visible');
+  document.getElementById('code-entry-hint').textContent = 'Es el código de la llamada, no tu clave bancaria.';
 
   const codeBoxes = document.getElementById('code-boxes');
   if (codeBoxes) codeBoxes.classList.remove('shake');
@@ -220,21 +219,32 @@ function validateCode() {
 
     vibrate([100, 30, 100, 30, 100]);
 
-    const errMsg = document.getElementById('code-error-msg');
-    if (errMsg) errMsg.classList.add('visible');
-
     schedule(() => {
-      boxes.forEach(box => {
-        box.textContent = '';
-        box.className = 'code-box';
-      });
       if (codeBoxes) codeBoxes.classList.remove('shake');
-      enteredCode = '';
-      currentBoxIndex = 0;
-      isProcessing = false;
-      if (boxes[0]) boxes[0].classList.add('focused');
-    }, 800);
+      showScreen('screen-unverified');
+      document.getElementById('unverified-title').focus();
+    }, 450);
   }
+}
+
+function correctCallCode() {
+  // Keep the entered digits so Rosa can correct a typing error with delete.
+  isProcessing = false;
+  document.querySelectorAll('.code-box').forEach(box => {
+    box.className = 'code-box filled';
+  });
+  document.getElementById('code-entry-hint').textContent = 'Usa la tecla de borrar para corregir el código.';
+  showScreen('screen-code-entry');
+}
+
+function endUnverifiedCall() {
+  clearInterval(callTimerInterval);
+  callTimerInterval = null;
+  isProcessing = false;
+  document.getElementById('return-to-app').hidden = true;
+  vibrate(30);
+  showScreen('screen-call-ended');
+  document.getElementById('call-ended-title').focus();
 }
 
 function resetDemo() {
