@@ -1,7 +1,5 @@
 const CORRECT_CODE = '1234';
 let currentScreen = 'screen-welcome';
-let enteredCode = '';
-let currentBoxIndex = 0;
 let callTimerInterval = null;
 let callSeconds = 0;
 let isProcessing = false;
@@ -33,7 +31,7 @@ function showScreen(id) {
   currentScreen = id;
 }
 
-function navigateWithinBCP(id) {
+function navigateWithinBCP(id, onArrive) {
   const destinations = {
     'screen-bcp-home': 'Abriendo el inicio de BCP',
     'screen-code-entry': 'Abriendo Código Confianza',
@@ -41,7 +39,10 @@ function navigateWithinBCP(id) {
   if (!destinations[id] || currentScreen === id || currentScreen === 'screen-app-transition') return;
   document.getElementById('app-transition-label').textContent = destinations[id];
   showScreen('screen-app-transition');
-  schedule(() => showScreen(id), 1000);
+  schedule(() => {
+    showScreen(id);
+    if (onArrive) onArrive();
+  }, 1000);
 }
 
 function startDemo() {
@@ -221,8 +222,6 @@ function openBCPApp() {
 
 function openCodigoConfianza() {
   vibrate(30);
-  enteredCode = '';
-  currentBoxIndex = 0;
   isProcessing = false;
 
   const boxes = document.querySelectorAll('.code-box');
@@ -234,88 +233,53 @@ function openCodigoConfianza() {
   const codeBoxes = document.getElementById('code-boxes');
   if (codeBoxes) codeBoxes.classList.remove('shake');
 
-  if (boxes[0]) boxes[0].classList.add('focused');
-
-  navigateWithinBCP('screen-code-entry');
+  navigateWithinBCP('screen-code-entry', revealConfidenceCode);
 }
 
-function pressKey(digit) {
-  if (currentBoxIndex >= 4 || isProcessing) return;
-
-  vibrate(15);
-
-  const box = document.getElementById(`box-${currentBoxIndex}`);
-  if (!box) return;
-
-  box.textContent = digit;
-  box.className = 'code-box filled pop';
-  enteredCode += digit;
-  currentBoxIndex++;
-
-  if (currentBoxIndex < 4) {
-    const nextBox = document.getElementById(`box-${currentBoxIndex}`);
-    if (nextBox) nextBox.classList.add('focused');
-  }
-
-  if (currentBoxIndex === 4) {
-    isProcessing = true;
-    schedule(() => validateCode(), 300);
-  }
-}
-
-function pressDelete() {
-  if (currentBoxIndex <= 0 || isProcessing) return;
-
-  vibrate(10);
-  currentBoxIndex--;
-  const box = document.getElementById(`box-${currentBoxIndex}`);
-  if (box) {
-    box.textContent = '';
-    box.className = 'code-box focused';
-  }
-
-  if (currentBoxIndex < 3) {
-    const nextBox = document.getElementById(`box-${currentBoxIndex + 1}`);
-    if (nextBox) nextBox.classList.remove('focused');
-  }
-
-  enteredCode = enteredCode.slice(0, -1);
-}
-
-function validateCode() {
-  if (enteredCode === CORRECT_CODE) {
-    const boxes = document.querySelectorAll('.code-box');
-    boxes.forEach(box => {
-      box.className = 'code-box success';
-    });
-    vibrate([50, 30, 50]);
-
+function revealConfidenceCode() {
+  // El código ya existe para esta sesión real — Rosa solo lo ve y compara, nunca lo escribe.
+  const digits = CORRECT_CODE.split('');
+  digits.forEach((digit, i) => {
     schedule(() => {
-      showScreen('screen-success');
-    }, 600);
-  } else {
-    const boxes = document.querySelectorAll('.code-box');
-    boxes.forEach(box => {
-      box.className = 'code-box error';
-    });
-
-    const codeBoxes = document.getElementById('code-boxes');
-    if (codeBoxes) {
-      codeBoxes.classList.add('shake');
-    }
-
-    vibrate([100, 30, 100, 30, 100]);
-
-    schedule(() => {
-      if (codeBoxes) codeBoxes.classList.remove('shake');
-      showScreen('screen-unverified');
-      document.getElementById('unverified-title').focus();
-    }, 450);
-  }
+      const box = document.getElementById(`box-${i}`);
+      if (box) {
+        box.textContent = digit;
+        box.className = 'code-box filled pop';
+        vibrate(15);
+      }
+    }, i * 220);
+  });
 }
 
-function correctCallCode() {
-  openCodigoConfianza();
+function confirmCodeMatch() {
+  if (isProcessing) return;
+  isProcessing = true;
+  vibrate([50, 30, 50]);
+
+  const boxes = document.querySelectorAll('.code-box');
+  boxes.forEach(box => box.classList.add('success'));
+
+  schedule(() => {
+    showScreen('screen-success');
+  }, 500);
+}
+
+function confirmCodeMismatch() {
+  if (isProcessing) return;
+  isProcessing = true;
+  vibrate([100, 30, 100, 30, 100]);
+
+  const boxes = document.querySelectorAll('.code-box');
+  boxes.forEach(box => box.classList.add('error'));
+
+  const codeBoxes = document.getElementById('code-boxes');
+  if (codeBoxes) codeBoxes.classList.add('shake');
+
+  schedule(() => {
+    if (codeBoxes) codeBoxes.classList.remove('shake');
+    showScreen('screen-unverified');
+    document.getElementById('unverified-title').focus();
+  }, 450);
 }
 
 function resetDemo() {
@@ -327,8 +291,6 @@ function resetDemo() {
   document.getElementById('call-timer').textContent = '00:00';
   clearInterval(callTimerInterval);
   callSeconds = 0;
-  enteredCode = '';
-  currentBoxIndex = 0;
   isProcessing = false;
 
   const revealDigits = ['cd1','cd2','cd3','cd4'];

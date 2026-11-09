@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=36">
+  <link rel="stylesheet" href="styles.css?v=37">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -332,31 +332,22 @@
             <polyline points="20,30 27,37 40,24" stroke="#F37021" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
-        <div class="code-instruction">Escribe el código que te dijo el asesor</div>
-        <p class="code-dynamic-note"><strong>Código dinámico</strong><span>Un código distinto para cada llamada.</span></p>
-        <!-- Code boxes -->
+        <div class="code-instruction">Este es tu Código Confianza para esta llamada</div>
+        <p class="code-dynamic-note"><strong>Código dinámico</strong><span>Espera a que Clara lo diga en voz alta. Nunca lo compartas tú.</span></p>
+        <!-- Code boxes (ya visibles, Rosa solo compara) -->
         <div class="code-boxes" id="code-boxes">
           <div class="code-box" id="box-0"></div>
           <div class="code-box" id="box-1"></div>
           <div class="code-box" id="box-2"></div>
           <div class="code-box" id="box-3"></div>
         </div>
-        <!-- Numeric keypad -->
-        <div class="keypad">
-          <button class="key" onclick="pressKey('1')">1</button>
-          <button class="key" onclick="pressKey('2')">2</button>
-          <button class="key" onclick="pressKey('3')">3</button>
-          <button class="key" onclick="pressKey('4')">4</button>
-          <button class="key" onclick="pressKey('5')">5</button>
-          <button class="key" onclick="pressKey('6')">6</button>
-          <button class="key" onclick="pressKey('7')">7</button>
-          <button class="key" onclick="pressKey('8')">8</button>
-          <button class="key" onclick="pressKey('9')">9</button>
-          <button class="key key-empty"></button>
-          <button class="key" onclick="pressKey('0')">0</button>
-          <button class="key key-delete" onclick="pressDelete()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><line x1="18" y1="9" x2="12" y2="15"/><line x1="12" y1="9" x2="18" y2="15"/></svg>
-          </button>
+        <!-- Comparación, no tipeo -->
+        <div class="code-compare">
+          <p class="code-compare-question">¿Coincide con lo que dice Clara?</p>
+          <div class="code-compare-actions">
+            <button class="btn-primary code-match-btn" onclick="confirmCodeMatch()">Sí, coincide</button>
+            <button class="code-mismatch-btn" onclick="confirmCodeMismatch()">No coincide, colgar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -372,9 +363,9 @@
           </svg>
           <p class="call-result-label">Llamada no verificada</p>
           <h2 id="unverified-title" tabindex="-1">Esta llamada podría no ser del BCP</h2>
-          <p class="call-result-message">El código que ingresaste no coincide. Por tu seguridad, te recomendamos colgar la llamada.</p>
+          <p class="call-result-message">El código que escuchaste no coincide con el de tu app. Por tu seguridad, cuelga la llamada.</p>
           <div class="call-result-actions">
-            <button type="button" class="btn-primary" onclick="correctCallCode()">Intentar de nuevo</button>
+            <button type="button" class="btn-primary" onclick="resetDemo()">Volver al inicio</button>
           </div>
         </div>
       </div>
@@ -435,7 +426,7 @@
 
   </div>
 
-  <script src="app.js?v=31"></script>
+  <script src="app.js?v=32"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
