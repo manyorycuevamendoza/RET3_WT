@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="styles.css?v=17">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -52,6 +52,11 @@
           <div class="push-title">Te llamaremos en 5 minutos</div>
           <div class="push-body">Un asesor BCP te llamará para contarte sobre tu <strong>crédito preaprobado</strong>.</div>
         </div>
+        <div class="notification-tap-hint" id="notification-tap-hint" aria-hidden="true">
+          <span class="notification-tap-mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="16" r="4" fill="currentColor"/></svg></span>
+          <span>Toca la pantalla para continuar</span>
+        </div>
+        <button type="button" class="notification-continue" id="notification-continue" onclick="continueAfterNotification()" aria-label="Continuar la demo: cinco minutos después" disabled></button>
       </div>
     </div>
 
@@ -398,7 +403,7 @@
 
   </div>
 
-  <script src="app.js?v=16"></script>
+  <script src="app.js?v=17"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});

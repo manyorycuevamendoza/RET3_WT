@@ -37,20 +37,30 @@ function startDemo() {
   resetDemo();
   updateClock();
   document.querySelector('.lockscreen').classList.remove('notification-departing');
+  document.getElementById('notification-continue').disabled = true;
+  document.getElementById('notification-tap-hint').classList.remove('show');
   showScreen('screen-notification');
   const push = document.getElementById('push-notif');
   if (push) {
     push.classList.remove('show');
     schedule(() => {
       push.classList.add('show');
+      document.getElementById('notification-continue').disabled = false;
+      document.getElementById('notification-tap-hint').classList.add('show');
       vibrate(30);
     }, 800);
   }
-  schedule(() => document.querySelector('.lockscreen').classList.add('notification-departing'), 6100);
+}
+
+function continueAfterNotification() {
+  const button = document.getElementById('notification-continue');
+  if (currentScreen !== 'screen-notification' || button.disabled) return;
+  button.disabled = true;
+  document.querySelector('.lockscreen').classList.add('notification-departing');
   schedule(() => {
     showScreen('screen-time-passage');
     schedule(acceptCall, 4200);
-  }, 6500);
+  }, 350);
 }
 
 function updateClock() {

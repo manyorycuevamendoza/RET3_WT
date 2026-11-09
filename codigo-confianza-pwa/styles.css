@@ -290,6 +290,20 @@ html, body {
   .lockscreen.notification-departing { opacity: 1; transform: none; }
 }
 
+/* The notification waits for the viewer; the entire screen is a native button. */
+.notification-continue { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; background: transparent; border: 0; padding: 0; cursor: pointer; }
+.notification-continue:disabled { cursor: default; }
+.notification-continue:focus-visible { outline: 3px solid #A8C9FF; outline-offset: -6px; border-radius: 12px; }
+.notification-tap-hint { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 16px; margin-top: 28px; color: #DFE9FF; font-size: 13px; line-height: 1.5; opacity: 0; pointer-events: none; }
+.notification-tap-mark { display: inline-flex; flex-shrink: 0; width: 32px; height: 32px; }
+.notification-tap-mark svg { width: 100%; height: 100%; }
+.notification-tap-hint.show { opacity: 1; animation: notification-clock-in 450ms ease-out 650ms backwards; }
+.notification-tap-hint.show .notification-tap-mark { animation: notification-tap-cue 1800ms ease-in-out 1100ms 3; }
+@keyframes notification-tap-cue { 0%, 100% { transform: scale(1); } 35% { transform: scale(.82); } 65% { transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) {
+  .notification-tap-hint.show, .notification-tap-hint.show .notification-tap-mark { animation: none; }
+}
+
 .push-header {
   display: flex;
   align-items: center;
