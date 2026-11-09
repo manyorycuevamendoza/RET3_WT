@@ -1001,14 +1001,7 @@ html, body {
   color: var(--success);
 }
 
-.code-entry-hint {
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #58617C;
-  padding: 0 20px;
-  margin: 4px 0 16px;
-}
+
 
 .call-result-screen { height: 100%; display: flex; flex-direction: column; background: white; overflow-y: auto; }
 .call-result-content { padding: 28px 24px; width: 100%; max-width: 430px; margin: auto; text-align: center; }

@@ -178,8 +178,6 @@ function openCodigoConfianza() {
     box.className = 'code-box';
   });
 
-  document.getElementById('code-entry-hint').textContent = 'Es el código de la llamada, no tu clave bancaria.';
-
   const codeBoxes = document.getElementById('code-boxes');
   if (codeBoxes) codeBoxes.classList.remove('shake');
 
