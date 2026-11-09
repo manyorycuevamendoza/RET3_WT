@@ -1227,6 +1227,19 @@ html, body {
 }
 .demo-transition h2 { font-size: 24px; line-height: 1.25; }
 .demo-transition p { color: #CBD3E3; font-size: 15px; }
+.demo-transition-skip {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #8CA3D1;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
 .time-passage-icon { width: 96px; height: 96px; color: #A8C9FF; margin-bottom: 8px; }
 #screen-time-passage { background: #10182C; }
 .time-hour-hand, .time-minute-hand { transform-origin: 40px 40px; }

@@ -100,7 +100,7 @@ function acceptCall() {
 function declineCall() {
   vibrate(30);
   showScreen('screen-call-declined');
-  schedule(() => startWhatsAppFlow(), 2200);
+  schedule(() => startWhatsAppFlow(), 4200);
 }
 
 function startWhatsAppFlow() {

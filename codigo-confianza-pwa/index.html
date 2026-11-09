@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=40">
+  <link rel="stylesheet" href="styles.css?v=41">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -122,6 +122,7 @@
         </svg>
         <h2>Rosa no contesta</h2>
         <p>Minutos después, le llega un mensaje de Clara.</p>
+        <button type="button" class="demo-transition-skip" onclick="resetDemo()">Volver al inicio</button>
       </div>
     </div>
 
@@ -419,7 +420,7 @@
 
   </div>
 
-  <script src="app.js?v=37"></script>
+  <script src="app.js?v=38"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
