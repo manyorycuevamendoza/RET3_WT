@@ -1,0 +1,172 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #er-phone {
+      width: 540px;
+      height: 960px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #er-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #er-push-overlay {
+      position: absolute;
+      top: 60px;
+      left: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      padding: 20px;
+      z-index: 20;
+    }
+    #er-push-error {
+      border: 3px solid #F44336;
+    }
+    #er-error-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #F44336;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    #er-error-icon svg { width: 40px; height: 40px; }
+    #er-shake-boxes {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .er-box {
+      width: 56px;
+      height: 64px;
+      border: 2.5px solid #F44336;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #F44336;
+      background: #FFF5F5;
+    }
+    #er-error-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #F44336;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    #er-error-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      color: #F44336;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    #er-error-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #333;
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    #er-colgar-btn {
+      width: 100%;
+      padding: 12px 0;
+      background: #F44336;
+      color: #FFF;
+      border: none;
+      border-radius: 24px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+    }
+    #er-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #F44336;
+      white-space: nowrap;
+    }
+  </style>
+  <div id="root" data-composition-id="error" data-width="1920" data-height="1080">
+    <div id="er-phone" class="clip" data-start="0" data-duration="3" data-layout-ignore>
+      <div id="er-notch"></div>
+      <div id="er-push-overlay">
+        <div id="er-shake-boxes">
+          <div class="er-box" id="er-b1">5</div>
+          <div class="er-box" id="er-b2">7</div>
+          <div class="er-box" id="er-b3">2</div>
+          <div class="er-box" id="er-b4">9</div>
+        </div>
+        <div id="er-error-text">Código incorrecto</div>
+      </div>
+      <div id="er-push-overlay-2" style="position:absolute;top:60px;left:24px;right:24px;background:#FFF;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.25);padding:20px;z-index:21;border:3px solid #F44336;opacity:0">
+        <div id="er-error-icon">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M12 12l16 16M28 12l-16 16" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div id="er-error-title">Esta llamada NO es del BCP</div>
+        <div id="er-error-body">No compartas información personal</div>
+        <div id="er-colgar-btn">Colgar y reportar</div>
+      </div>
+    </div>
+    <div id="er-step-label" class="clip" data-start="0.3" data-duration="2.7">Código incorrecto — no es el banco</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#er-phone", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#er-push-overlay", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 0.15);
+    tl.to("#er-shake-boxes", { x: 12, duration: 0.05, ease: "power1.inOut" }, 0.5);
+    tl.to("#er-shake-boxes", { x: -12, duration: 0.05, ease: "power1.inOut" }, 0.55);
+    tl.to("#er-shake-boxes", { x: 10, duration: 0.05, ease: "power1.inOut" }, 0.6);
+    tl.to("#er-shake-boxes", { x: -10, duration: 0.05, ease: "power1.inOut" }, 0.65);
+    tl.to("#er-shake-boxes", { x: 6, duration: 0.05, ease: "power1.inOut" }, 0.7);
+    tl.to("#er-shake-boxes", { x: -6, duration: 0.05, ease: "power1.inOut" }, 0.75);
+    tl.to("#er-shake-boxes", { x: 0, duration: 0.05, ease: "power1.inOut" }, 0.8);
+    tl.fromTo("#er-error-text", { opacity: 0 }, { opacity: 1, duration: 0.15, ease: "power2.out" }, 0.85);
+    tl.to("#er-push-overlay", { opacity: 0, duration: 0.2, ease: "power3.in" }, 1.3);
+    tl.fromTo("#er-push-overlay-2", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 1.5);
+    tl.fromTo("#er-colgar-btn", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "expo.out" }, 1.8);
+    tl.fromTo("#er-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.3);
+    tl.to("#er-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 2.5);
+    tl.to("#er-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 2.5);
+    window.__timelines["error"] = tl;
+  </script>
+</template>

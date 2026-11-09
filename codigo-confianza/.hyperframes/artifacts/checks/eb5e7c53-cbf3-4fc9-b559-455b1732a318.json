@@ -1,0 +1,503 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "filesScanned": 10
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 35,
+    "samples": [
+      1.944,
+      5.833,
+      9.722,
+      13.611,
+      17.5,
+      21.389,
+      25.278,
+      29.167,
+      33.056
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.12:1; WCAG AA requires 3:1.",
+        "text": "02",
+        "fg": "rgb(230,233,239)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.12,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(140,142,145)",
+        "large": true,
+        "selector": "#ll-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 1637.109375,
+          "y": 60,
+          "width": 162.890625,
+          "height": 145
+        },
+        "time": 9.722,
+        "times": [
+          9.722
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.39:1; WCAG AA requires 3:1.",
+        "text": "Llega la llamada — número desconocido",
+        "fg": "rgb(0,42,141)",
+        "bg": "rgb(26,26,46)",
+        "ratio": 1.39,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(71,101,173)",
+        "large": true,
+        "selector": "#ll-step-label",
+        "dataAttributes": {
+          "data-start": "0.4",
+          "data-duration": "3.6"
+        },
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 685.8359375,
+          "y": 986,
+          "width": 548.328125,
+          "height": 34
+        },
+        "time": 9.722,
+        "times": [
+          9.722
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.12:1; WCAG AA requires 3:1.",
+        "text": "04",
+        "fg": "rgb(230,233,239)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.12,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(140,142,145)",
+        "large": true,
+        "selector": "#pc-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 1630.421875,
+          "y": 60,
+          "width": 169.578125,
+          "height": 145
+        },
+        "time": 17.5,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.08:1; WCAG AA requires 3:1.",
+        "text": "✓",
+        "fg": "rgb(231,239,232)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.08,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,143,139)",
+        "large": true,
+        "selector": "#vf-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/verificado.html",
+        "bbox": {
+          "x": 1694.296875,
+          "y": 60,
+          "width": 105.703125,
+          "height": 145
+        },
+        "time": 25.278,
+        "times": [
+          25.278
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.944,
+      9.722,
+      17.5,
+      25.278,
+      33.056
+    ],
+    "checked": 10,
+    "passed": 6
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 6,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "first_frame_empty",
+        "severity": "warning",
+        "message": "Frame 0 shows only the background, and the first frame is the thumbnail on social players: have the title or key image already on screen at 0 s instead of entering from nothing; see references/review.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 35 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "dead_stretch",
+        "severity": "warning",
+        "message": "Nothing on screen changes for 3.75 s (12.75–16.50 s): start the next move within 3 s, or put data-hold on the element whose stillness is deliberate; see references/motion.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 12.75,
+        "seconds": 3.75,
+        "floorSeconds": 3,
+        "until": 16.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"El código lo dice el banco. Tú lo escribes. Nunca al revés.\" (12 words) is on screen 2.83 s (±0.01 s), under the 3.07 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "El código lo dice el banco. Tú lo escribes. Nunca al revés.",
+        "selector": "#ci-rule",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 647.72,
+          "y": 485.31,
+          "width": 624.56,
+          "height": 107.69
+        },
+        "time": 32.172,
+        "words": 12,
+        "seconds": 2.832,
+        "floorSeconds": 3.075,
+        "measured": [
+          {
+            "time": 31.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.25,
+            "opacity": 0.95,
+            "heightPx": 108
+          },
+          {
+            "time": 32.375,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 32.5,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 32.625,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 108
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"BCP\" (1 word) is on screen 1.96 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "BCP",
+        "selector": "#ci-bcp-text",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 935.75,
+          "y": 555.19,
+          "width": 122.75,
+          "height": 68
+        },
+        "time": 33.039,
+        "words": 1,
+        "seconds": 1.965,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 32.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.125,
+            "opacity": 0.9,
+            "heightPx": 68
+          },
+          {
+            "time": 33.25,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 33.375,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 33.5,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 68
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"CÓDIGO CONFIANZA\" (2 words) is on screen 1.64 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "CÓDIGO CONFIANZA",
+        "selector": "#ci-product-name",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 768.43,
+          "y": 638.26,
+          "width": 383.12,
+          "height": 40.860000000000014
+        },
+        "time": 33.367,
+        "words": 2,
+        "seconds": 1.637,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 33,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.375,
+            "opacity": 0.68,
+            "heightPx": 41
+          },
+          {
+            "time": 33.5,
+            "opacity": 0.98,
+            "heightPx": 39
+          },
+          {
+            "time": 33.625,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 33.75,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 39
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 280
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

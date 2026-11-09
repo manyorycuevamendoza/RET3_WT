@@ -1,0 +1,1105 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "gsap_non_transform_motion",
+        "severity": "error",
+        "message": "GSAP tween on \"#ci-product-name\" uses motion that snaps to integer device pixels: letterSpacing. Layout and text-reflow properties snap during browser layout; roundProps rounds the tween value. Slow motion or an ease-out tail then stutters under the seek-by-frame capture engine. Animate transforms (x/y/scale/opacity) instead.",
+        "selector": "#ci-product-name",
+        "dataAttributes": {},
+        "sourceFile": "/home/manyory/Documentos/RET3_WT/codigo-confianza/compositions/cierre.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "do not animate letterSpacing (they reflow text and snap glyph positions): for letterSpacing, split the text into per-character elements and animate each glyph's x (the spread), since uniform scale is NOT equivalent, or hold the final value statically. Transforms interpolate sub-pixel and stay smooth at any speed."
+      }
+    ],
+    "filesScanned": 10
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 2,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 17.5,
+        "selector": "#pc-call-status",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 901.98,
+          "top": 180,
+          "right": 1018,
+          "bottom": 200,
+          "width": 116.02,
+          "height": 20
+        },
+        "containerSelector": "#pc-push-overlay",
+        "text": "Llamada activa",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 17,
+          "end": 21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 901.98,
+          "y": 180,
+          "width": 116.02,
+          "height": 20
+        },
+        "firstSeen": 17.5,
+        "lastSeen": 17.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "error",
+        "time": 17.5,
+        "selector": "#pc-call-num",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 864.95,
+          "top": 208,
+          "right": 1055.03,
+          "bottom": 237,
+          "width": 190.08,
+          "height": 29
+        },
+        "containerSelector": "#pc-push-overlay",
+        "text": "+51 987 654 321",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "lifetime": {
+          "start": 17,
+          "end": 21
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 864.95,
+          "y": 208,
+          "width": 190.08,
+          "height": 29
+        },
+        "firstSeen": 17.5,
+        "lastSeen": 17.5,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 9.722,
+        "selector": "#ll-caller-icon > svg:nth-of-type(1) > ellipse:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 944,
+          "top": 314,
+          "right": 976,
+          "bottom": 338,
+          "width": 32,
+          "height": 24
+        },
+        "containerSelector": "#ll-caller-icon > svg:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 936,
+          "top": 284,
+          "right": 984,
+          "bottom": 332,
+          "width": 48,
+          "height": 48
+        },
+        "overflow": {
+          "bottom": 6
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 944,
+          "y": 314,
+          "width": 32,
+          "height": 24
+        },
+        "firstSeen": 9.722,
+        "lastSeen": 9.722,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          9.722
+        ]
+      }
+    ],
+    "duration": 35,
+    "samples": [
+      1.944,
+      5.833,
+      9.722,
+      13.611,
+      17.5,
+      21.389,
+      25.278,
+      29.167,
+      33.056
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 3,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 6,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.12:1; WCAG AA requires 3:1.",
+        "text": "02",
+        "fg": "rgb(230,233,239)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.12,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(140,142,145)",
+        "large": true,
+        "selector": "#ll-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 1637.109375,
+          "y": 60,
+          "width": 162.890625,
+          "height": 145
+        },
+        "time": 9.722,
+        "times": [
+          9.722
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.39:1; WCAG AA requires 3:1.",
+        "text": "Llega la llamada — número desconocido",
+        "fg": "rgb(0,42,141)",
+        "bg": "rgb(26,26,46)",
+        "ratio": 1.39,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(71,101,173)",
+        "large": true,
+        "selector": "#ll-step-label",
+        "dataAttributes": {
+          "data-start": "0.4",
+          "data-duration": "3.6"
+        },
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 685.8359375,
+          "y": 986,
+          "width": 548.328125,
+          "height": 34
+        },
+        "time": 9.722,
+        "times": [
+          9.722
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.12:1; WCAG AA requires 3:1.",
+        "text": "04",
+        "fg": "rgb(230,233,239)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.12,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(140,142,145)",
+        "large": true,
+        "selector": "#pc-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 1630.421875,
+          "y": 60,
+          "width": 169.578125,
+          "height": 145
+        },
+        "time": 17.5,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.71:1; WCAG AA requires 4.5:1.",
+        "text": "Llamada activa",
+        "fg": "rgb(76,175,80)",
+        "bg": "rgb(252,252,252)",
+        "ratio": 2.71,
+        "requiredRatio": 4.5,
+        "suggestedColor": "rgb(58,132,61)",
+        "large": false,
+        "selector": "#pc-call-status",
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 864.953125,
+          "y": 180,
+          "width": 190.078125,
+          "height": 20
+        },
+        "time": 17.5,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.03:1; WCAG AA requires 3:1.",
+        "text": "+51 987 654 321",
+        "fg": "rgb(255,255,255)",
+        "bg": "rgb(252,252,252)",
+        "ratio": 1.03,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(146,146,146)",
+        "large": true,
+        "selector": "#pc-call-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 864.953125,
+          "y": 208,
+          "width": 190.078125,
+          "height": 29
+        },
+        "time": 17.5,
+        "times": [
+          17.5
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.08:1; WCAG AA requires 3:1.",
+        "text": "✓",
+        "fg": "rgb(231,239,232)",
+        "bg": "rgb(245,245,245)",
+        "ratio": 1.08,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(139,143,139)",
+        "large": true,
+        "selector": "#vf-step-num",
+        "dataAttributes": {
+          "data-start": "0",
+          "data-duration": "4"
+        },
+        "sourceFile": "compositions/verificado.html",
+        "bbox": {
+          "x": 1694.296875,
+          "y": 60,
+          "width": 105.703125,
+          "height": 145
+        },
+        "time": 25.278,
+        "times": [
+          25.278
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.944,
+      9.722,
+      17.5,
+      25.278,
+      33.056
+    ],
+    "checked": 16,
+    "passed": 10
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 12,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "first_frame_empty",
+        "severity": "warning",
+        "message": "Frame 0 shows only the background, and the first frame is the thumbnail on social players: have the title or key image already on screen at 0 s instead of entering from nothing; see references/review.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 35 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"ahora\" at 12 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "ahora",
+        "selector": "#pp-notif-time",
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-permiso.html",
+        "bbox": {
+          "x": 1157.7,
+          "y": 189.15,
+          "width": 32.3,
+          "height": 15
+        },
+        "time": 4.375,
+        "times": [
+          4.125,
+          4.375,
+          4.375,
+          4.375,
+          4.375,
+          4.875,
+          5,
+          5.125
+        ],
+        "fontPx": 12,
+        "floorPx": 28,
+        "seconds": 3.5,
+        "elements": [
+          {
+            "selector": "#pp-notif-time",
+            "text": "ahora",
+            "fontPx": 12,
+            "time": 4.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#pp-btn-ahora",
+            "text": "Ahora",
+            "fontPx": 12.75,
+            "time": 4.875,
+            "seconds": 3
+          },
+          {
+            "selector": "#pp-btn-tarde",
+            "text": "Más tarde",
+            "fontPx": 12.94,
+            "time": 5,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#pp-btn-no",
+            "text": "No me interesa",
+            "fontPx": 12.94,
+            "time": 5.125,
+            "seconds": 2.75
+          },
+          {
+            "selector": "#pp-statusbar > span:nth-of-type(1)",
+            "text": "9:41",
+            "fontPx": 14,
+            "time": 4.125,
+            "seconds": 3.75
+          },
+          {
+            "selector": "#pp-notif-body",
+            "text": "Queremos contactarte por un . Te llamaremos en los próximos 5 min.",
+            "fontPx": 15,
+            "time": 4.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#pp-notif-body > strong:nth-of-type(1)",
+            "text": "crédito preaprobado",
+            "fontPx": 15,
+            "time": 4.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#pp-notif-title",
+            "text": "BCP",
+            "fontPx": 16,
+            "time": 4.375,
+            "seconds": 3.5
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and \"Número desconocido\" renders at 16 px for 3.25 s: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Número desconocido",
+        "selector": "#ll-label",
+        "dataAttributes": {},
+        "sourceFile": "compositions/llamada.html",
+        "bbox": {
+          "x": 878.77,
+          "y": 427,
+          "width": 162.46,
+          "height": 20
+        },
+        "time": 8.625,
+        "times": [
+          8.625
+        ],
+        "fontPx": 16,
+        "floorPx": 28,
+        "seconds": 3.25,
+        "elements": [
+          {
+            "selector": "#ll-label",
+            "text": "Número desconocido",
+            "fontPx": 16,
+            "time": 8.625,
+            "seconds": 3.25
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 6 text elements stay under it for 0.5 s or more, the smallest \"Asesor BCP\" at 16 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Asesor BCP",
+        "selector": "#cv-advisor-role",
+        "dataAttributes": {},
+        "sourceFile": "compositions/codigo-voz.html",
+        "bbox": {
+          "x": 699.98,
+          "y": 515.5,
+          "width": 89.75,
+          "height": 20
+        },
+        "time": 12.125,
+        "times": [
+          12.125,
+          12.125,
+          12.25,
+          12.25,
+          12.25,
+          12.625
+        ],
+        "fontPx": 16,
+        "floorPx": 28,
+        "seconds": 4.625,
+        "elements": [
+          {
+            "selector": "#cv-advisor-role",
+            "text": "Asesor BCP",
+            "fontPx": 16,
+            "time": 12.125,
+            "seconds": 4.625
+          },
+          {
+            "selector": "#cv-call-timer",
+            "text": "00:12",
+            "fontPx": 16,
+            "time": 12.25,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#cv-call-active",
+            "text": "Llamada activa",
+            "fontPx": 18,
+            "time": 12.25,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#cv-speech-text",
+            "text": "\"Hola Rosa, soy Carlos del BCP. Tu Código Confianza es:\"",
+            "fontPx": 21.99,
+            "time": 12.625,
+            "seconds": 4.125
+          },
+          {
+            "selector": "#cv-call-number",
+            "text": "+51 987 654 321",
+            "fontPx": 22,
+            "time": 12.25,
+            "seconds": 4.5
+          },
+          {
+            "selector": "#cv-advisor-name",
+            "text": "Carlos Mendoza",
+            "fontPx": 24,
+            "time": 12.125,
+            "seconds": 4.625
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 4 text elements stay under it for 0.5 s or more, the smallest \"Ingresa tu Código Confianza para veri...\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Ingresa tu Código Confianza para verificar esta llamada",
+        "selector": "#pc-push-body",
+        "dataAttributes": {},
+        "sourceFile": "compositions/push-codigo.html",
+        "bbox": {
+          "x": 734,
+          "y": 167.21,
+          "width": 367.61,
+          "height": 17
+        },
+        "time": 17.375,
+        "times": [
+          17.125,
+          17.125,
+          17.375,
+          17.375
+        ],
+        "fontPx": 14,
+        "floorPx": 28,
+        "seconds": 3.5,
+        "elements": [
+          {
+            "selector": "#pc-push-body",
+            "text": "Ingresa tu Código Confianza para verificar esta llamada",
+            "fontPx": 14,
+            "time": 17.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#pc-push-title",
+            "text": "BCP",
+            "fontPx": 15,
+            "time": 17.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#pc-call-status",
+            "text": "Llamada activa",
+            "fontPx": 15.77,
+            "time": 17.125,
+            "seconds": 3.75
+          },
+          {
+            "selector": "#pc-call-num",
+            "text": "+51 987 654 321",
+            "fontPx": 23.66,
+            "time": 17.125,
+            "seconds": 3.75
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 3 text elements stay under it for 0.5 s or more, the smallest \"Ingresa tu Código Confianza\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Ingresa tu Código Confianza",
+        "selector": "#ig-push-body",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ingreso.html",
+        "bbox": {
+          "x": 734,
+          "y": 178,
+          "width": 188.5,
+          "height": 17
+        },
+        "time": 21.375,
+        "times": [
+          21.375,
+          21.375,
+          21.375
+        ],
+        "fontPx": 14,
+        "floorPx": 28,
+        "seconds": 3.5,
+        "elements": [
+          {
+            "selector": "#ig-push-body",
+            "text": "Ingresa tu Código Confianza",
+            "fontPx": 14,
+            "time": 21.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#ig-push-title",
+            "text": "BCP",
+            "fontPx": 15,
+            "time": 21.375,
+            "seconds": 3.5
+          },
+          {
+            "selector": "#ig-verify-btn",
+            "text": "Verificar",
+            "fontPx": 16,
+            "time": 21.375,
+            "seconds": 3.5
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 8 text elements stay under it for 0.5 s or more, the smallest \"Estás en un entorno seguro\" at 13 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Estás en un entorno seguro",
+        "selector": "#vf-safe-msg",
+        "dataAttributes": {},
+        "sourceFile": "compositions/verificado.html",
+        "bbox": {
+          "x": 874.08,
+          "y": 404,
+          "width": 171.83,
+          "height": 16
+        },
+        "time": 26.375,
+        "times": [
+          25.75,
+          26,
+          26,
+          26,
+          26,
+          26,
+          26,
+          26.375
+        ],
+        "fontPx": 13,
+        "floorPx": 28,
+        "seconds": 2.5,
+        "elements": [
+          {
+            "selector": "#vf-safe-msg",
+            "text": "Estás en un entorno seguro",
+            "fontPx": 13,
+            "time": 26.375,
+            "seconds": 2.5
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(1) > span:nth-of-type(1)",
+            "text": "Asesor",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(1) > span:nth-of-type(2)",
+            "text": "Carlos Mendoza",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(2) > span:nth-of-type(1)",
+            "text": "Motivo",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(2) > span:nth-of-type(2)",
+            "text": "Crédito preaprobado",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(3) > span:nth-of-type(1)",
+            "text": "Verificado",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-details > div:nth-of-type(3) > span:nth-of-type(2)",
+            "text": "BCP oficial",
+            "fontPx": 14,
+            "time": 26,
+            "seconds": 2.875
+          },
+          {
+            "selector": "#vf-success-title",
+            "text": "Llamada verificada",
+            "fontPx": 22,
+            "time": 25.75,
+            "seconds": 3.125
+          }
+        ]
+      },
+      {
+        "code": "text_below_floor",
+        "severity": "warning",
+        "message": "Type floor is 28 px (2.6% of the 1080 px short side, what a phone can read) and 4 text elements stay under it for 0.5 s or more, the smallest \"Código incorrecto\" at 14 px: set reading text to at least 28 px, or put data-layout-ignore on text that is texture rather than reading; see references/look.md.",
+        "text": "Código incorrecto",
+        "selector": "#er-error-text",
+        "dataAttributes": {},
+        "sourceFile": "compositions/error.html",
+        "bbox": {
+          "x": 900.45,
+          "y": 216,
+          "width": 119.1,
+          "height": 17
+        },
+        "time": 30,
+        "times": [
+          30,
+          30.625,
+          30.625,
+          30.875
+        ],
+        "fontPx": 14,
+        "floorPx": 28,
+        "seconds": 0.5,
+        "elements": [
+          {
+            "selector": "#er-error-text",
+            "text": "Código incorrecto",
+            "fontPx": 14,
+            "time": 30,
+            "seconds": 0.5
+          },
+          {
+            "selector": "#er-error-body",
+            "text": "No compartas información personal",
+            "fontPx": 14.86,
+            "time": 30.625,
+            "seconds": 1.25
+          },
+          {
+            "selector": "#er-colgar-btn",
+            "text": "Colgar y reportar",
+            "fontPx": 15.85,
+            "time": 30.875,
+            "seconds": 1
+          },
+          {
+            "selector": "#er-error-title",
+            "text": "Esta llamada NO es del BCP",
+            "fontPx": 19.81,
+            "time": 30.625,
+            "seconds": 1.25
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"El código lo dice el banco. Tú lo escribes. Nunca al revés.\" (12 words) is on screen 2.83 s (±0.01 s), under the 3.07 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "El código lo dice el banco. Tú lo escribes. Nunca al revés.",
+        "selector": "#ci-rule",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 647.72,
+          "y": 485.31,
+          "width": 624.56,
+          "height": 107.69
+        },
+        "time": 32.172,
+        "words": 12,
+        "seconds": 2.832,
+        "floorSeconds": 3.075,
+        "measured": [
+          {
+            "time": 31.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.25,
+            "opacity": 0.95,
+            "heightPx": 108
+          },
+          {
+            "time": 32.375,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 32.5,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 32.625,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 108
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 108
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"BCP\" (1 word) is on screen 1.96 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "BCP",
+        "selector": "#ci-bcp-text",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 935.75,
+          "y": 555.19,
+          "width": 122.75,
+          "height": 68
+        },
+        "time": 33.039,
+        "words": 1,
+        "seconds": 1.965,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 32.75,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 32.875,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.125,
+            "opacity": 0.9,
+            "heightPx": 68
+          },
+          {
+            "time": 33.25,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 33.375,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 33.5,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 68
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 68
+          }
+        ]
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"CÓDIGO CONFIANZA\" (2 words) is on screen 1.64 s (±0.01 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "CÓDIGO CONFIANZA",
+        "selector": "#ci-product-name",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cierre.html",
+        "bbox": {
+          "x": 767.38,
+          "y": 639.19,
+          "width": 385.23000000000013,
+          "height": 39
+        },
+        "time": 33.367,
+        "words": 2,
+        "seconds": 1.637,
+        "floorSeconds": 2,
+        "measured": [
+          {
+            "time": 33,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.125,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.25,
+            "opacity": null,
+            "heightPx": null
+          },
+          {
+            "time": 33.375,
+            "opacity": 0.68,
+            "heightPx": 39
+          },
+          {
+            "time": 33.5,
+            "opacity": 0.98,
+            "heightPx": 39
+          },
+          {
+            "time": 33.625,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 33.75,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.5,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.625,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.75,
+            "opacity": 1,
+            "heightPx": 39
+          },
+          {
+            "time": 34.875,
+            "opacity": 1,
+            "heightPx": 39
+          }
+        ]
+      }
+    ],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 280
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "audio_none",
+        "severity": "info",
+        "message": "The film has no sound: no clip in it plays audio.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      }
+    ]
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

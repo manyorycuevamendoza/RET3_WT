@@ -1,0 +1,159 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #vf-phone {
+      width: 540px;
+      height: 960px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #vf-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #vf-push-overlay {
+      position: absolute;
+      top: 60px;
+      left: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      padding: 20px;
+      z-index: 20;
+      border: 3px solid #4CAF50;
+    }
+    #vf-success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #4CAF50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    #vf-success-icon svg { width: 40px; height: 40px; }
+    #vf-success-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #4CAF50;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    #vf-details {
+      background: #F0F8F0;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .vf-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+    }
+    .vf-detail-label {
+      color: #666;
+    }
+    .vf-detail-value {
+      color: #002A8D;
+      font-weight: 600;
+    }
+    #vf-safe-msg {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #4CAF50;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    #vf-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #4CAF50;
+      white-space: nowrap;
+    }
+    #vf-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(76,175,80,0.08);
+    }
+  </style>
+  <div id="root" data-composition-id="verificado" data-width="1920" data-height="1080">
+    <div id="vf-step-num" class="clip" data-start="0" data-duration="4">✓</div>
+    <div id="vf-phone" class="clip" data-start="0" data-duration="4" data-layout-ignore>
+      <div id="vf-notch"></div>
+      <div id="vf-push-overlay">
+        <div id="vf-success-icon">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M10 20l8 8 14-16" stroke="#FFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div id="vf-success-title">Llamada verificada</div>
+        <div id="vf-details">
+          <div class="vf-detail-row">
+            <span class="vf-detail-label">Asesor</span>
+            <span class="vf-detail-value">Carlos Mendoza</span>
+          </div>
+          <div class="vf-detail-row">
+            <span class="vf-detail-label">Motivo</span>
+            <span class="vf-detail-value">Crédito preaprobado</span>
+          </div>
+          <div class="vf-detail-row">
+            <span class="vf-detail-label">Verificado</span>
+            <span class="vf-detail-value" style="color:#4CAF50">BCP oficial</span>
+          </div>
+        </div>
+        <div id="vf-safe-msg">Estás en un entorno seguro</div>
+      </div>
+    </div>
+    <div id="vf-step-label" class="clip" data-start="0.5" data-duration="3.5">Es el BCP — llamada verificada</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#vf-phone", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#vf-push-overlay", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 0.2);
+    tl.fromTo("#vf-success-icon", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.4)" }, 0.4);
+    tl.fromTo("#vf-success-title", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, ease: "expo.out" }, 0.7);
+    tl.fromTo("#vf-details", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0.9);
+    tl.fromTo("#vf-safe-msg", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 1.2);
+    tl.fromTo("#vf-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.fromTo("#vf-step-num", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+    tl.to("#vf-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#vf-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.5);
+    window.__timelines["verificado"] = tl;
+  </script>
+</template>

@@ -1,0 +1,139 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #ll-phone {
+      width: 540px;
+      height: 960px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #ll-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #ll-caller-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #333;
+      margin-top: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ll-caller-icon svg { width: 48px; height: 48px; }
+    #ll-number {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 32px;
+      color: #FFF;
+      margin-top: 24px;
+      letter-spacing: 0.02em;
+    }
+    #ll-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+    }
+    #ll-call-buttons {
+      position: absolute;
+      bottom: 100px;
+      display: flex;
+      gap: 80px;
+    }
+    .ll-call-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ll-decline { background: #F44336; }
+    #ll-accept { background: #4CAF50; }
+    .ll-call-btn svg { width: 32px; height: 32px; }
+    #ll-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #002A8D;
+      white-space: nowrap;
+    }
+    #ll-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(0,42,141,0.06);
+    }
+  </style>
+  <div id="root" data-composition-id="llamada" data-width="1920" data-height="1080">
+    <div id="ll-step-num" class="clip" data-start="0" data-duration="4">02</div>
+    <div id="ll-phone" class="clip" data-start="0" data-duration="4" data-layout-ignore>
+      <div id="ll-notch"></div>
+      <div id="ll-caller-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="18" r="10" fill="#666"/>
+          <ellipse cx="24" cy="42" rx="16" ry="12" fill="#666"/>
+        </svg>
+      </div>
+      <div id="ll-number">+51 987 654 321</div>
+      <div id="ll-label">Número desconocido</div>
+      <div id="ll-call-buttons">
+        <div class="ll-call-btn" id="ll-decline">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M6 12c4-6 16-6 20 0l-4 4c-3-3-9-3-12 0l-4-4z" fill="#FFF" transform="rotate(135 16 16)"/>
+          </svg>
+        </div>
+        <div class="ll-call-btn" id="ll-accept">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M6 12c4-6 16-6 20 0l-4 4c-3-3-9-3-12 0l-4-4z" fill="#FFF"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div id="ll-step-label" class="clip" data-start="0.4" data-duration="3.6">Llega la llamada — número desconocido</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ll-phone", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 0);
+    tl.fromTo("#ll-caller-icon", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.2);
+    tl.fromTo("#ll-number", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.4);
+    tl.fromTo("#ll-label", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 0.5);
+    tl.fromTo("#ll-accept", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(1.4)" }, 0.6);
+    tl.fromTo("#ll-decline", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, ease: "back.out(1.4)" }, 0.7);
+    tl.to("#ll-accept", { scale: 1.1, duration: 0.4, ease: "power1.inOut", yoyo: true, repeat: 3 }, 1.2);
+    tl.fromTo("#ll-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.4);
+    tl.to("#ll-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#ll-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.5);
+    window.__timelines["llamada"] = tl;
+  </script>
+</template>

@@ -1,0 +1,81 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #002A8D;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      overflow: hidden;
+    }
+    #ci-rule {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 42px;
+      color: #FFFFFF;
+      text-align: center;
+      max-width: 900px;
+      line-height: 1.35;
+    }
+    #ci-rule-highlight {
+      color: #F37021;
+    }
+    #ci-logo-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    #ci-bcp-logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    #ci-bcp-arrows {
+      width: 64px;
+      height: 64px;
+    }
+    #ci-bcp-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+    }
+    #ci-product-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.08em;
+    }
+  </style>
+  <div id="root" data-composition-id="cierre" data-width="1920" data-height="1080">
+    <div id="ci-rule" class="clip" data-start="0" data-duration="3">
+      El código lo dice el banco.
+      <br/>Tú lo escribes. <span id="ci-rule-highlight">Nunca al revés.</span>
+    </div>
+    <div id="ci-logo-group" class="clip" data-start="0.8" data-duration="2.2">
+      <div id="ci-bcp-logo">
+        <svg id="ci-bcp-arrows" viewBox="0 0 64 64" fill="none">
+          <polygon points="32,4 48,32 32,24 16,32" fill="#FFFFFF"/>
+          <polygon points="32,60 16,32 32,40 48,32" fill="#F37021"/>
+        </svg>
+        <span id="ci-bcp-text">BCP</span>
+      </div>
+      <div id="ci-product-name">CÓDIGO CONFIANZA</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ci-rule", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power4.out" }, 0.1);
+    tl.fromTo("#ci-rule-highlight", { color: "rgba(243,112,33,0)" }, { color: "#F37021", duration: 0.2, ease: "power2.out" }, 0.6);
+    tl.fromTo("#ci-bcp-arrows", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.4)" }, 0.8);
+    tl.fromTo("#ci-bcp-text", { x: -30, opacity: 0, filter: "blur(6px)" }, { x: 0, opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 1.0);
+    tl.fromTo("#ci-product-name", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, 1.3);
+    window.__timelines["cierre"] = tl;
+  </script>
+</template>

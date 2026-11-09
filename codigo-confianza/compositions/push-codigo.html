@@ -1,0 +1,180 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #pc-phone {
+      width: 540px;
+      height: 960px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #pc-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #pc-call-info {
+      margin-top: 120px;
+      text-align: center;
+    }
+    #pc-call-status {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #4CAF50;
+      font-weight: 600;
+    }
+    #pc-call-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      color: #FFF;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    #pc-push-overlay {
+      position: absolute;
+      top: 60px;
+      left: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      padding: 16px 20px;
+      z-index: 20;
+    }
+    #pc-push-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #pc-push-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #002A8D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #pc-push-icon svg { width: 18px; height: 18px; }
+    #pc-push-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #002A8D;
+    }
+    #pc-push-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    #pc-code-boxes {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .pc-box {
+      width: 56px;
+      height: 64px;
+      border: 2.5px solid #002A8D;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #002A8D;
+      background: #F8FAFF;
+    }
+    #pc-cursor {
+      width: 2px;
+      height: 32px;
+      background: #0063BD;
+    }
+    #pc-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #002A8D;
+      white-space: nowrap;
+    }
+    #pc-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(0,42,141,0.06);
+    }
+  </style>
+  <div id="root" data-composition-id="push-codigo" data-width="1920" data-height="1080">
+    <div id="pc-step-num" class="clip" data-start="0" data-duration="4">04</div>
+    <div id="pc-phone" class="clip" data-start="0" data-duration="4" data-layout-ignore>
+      <div id="pc-notch"></div>
+      <div id="pc-call-info" data-layout-ignore>
+        <div id="pc-call-status">Llamada activa</div>
+        <div id="pc-call-num">+51 987 654 321</div>
+      </div>
+      <div id="pc-push-overlay">
+        <div id="pc-push-header">
+          <div id="pc-push-icon">
+            <svg viewBox="0 0 18 18" fill="none">
+              <polygon points="9,1 12,9 9,7 6,9" fill="#FFF"/>
+              <polygon points="9,17 6,9 9,11 12,9" fill="#F37021"/>
+            </svg>
+          </div>
+          <span id="pc-push-title">BCP</span>
+        </div>
+        <div id="pc-push-body">Ingresa tu Código Confianza para verificar esta llamada</div>
+        <div id="pc-code-boxes">
+          <div class="pc-box" id="pc-box1"><div id="pc-cursor"></div></div>
+          <div class="pc-box" id="pc-box2"></div>
+          <div class="pc-box" id="pc-box3"></div>
+          <div class="pc-box" id="pc-box4"></div>
+        </div>
+      </div>
+    </div>
+    <div id="pc-step-label" class="clip" data-start="0.5" data-duration="3.5">La app BCP envía push notification con campo de código</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pc-phone", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 0);
+    tl.fromTo("#pc-push-overlay", { y: -40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "expo.out" }, 0.3);
+    tl.fromTo("#pc-box1", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "expo.out" }, 0.7);
+    tl.fromTo("#pc-box2", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "expo.out" }, 0.8);
+    tl.fromTo("#pc-box3", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "expo.out" }, 0.9);
+    tl.fromTo("#pc-box4", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.15, ease: "expo.out" }, 1.0);
+    tl.to("#pc-cursor", { opacity: 0, duration: 0.3, yoyo: true, repeat: 5, ease: "steps(1)" }, 1.2);
+    tl.fromTo("#pc-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.fromTo("#pc-step-num", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+    tl.to("#pc-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#pc-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.5);
+    window.__timelines["push-codigo"] = tl;
+  </script>
+</template>

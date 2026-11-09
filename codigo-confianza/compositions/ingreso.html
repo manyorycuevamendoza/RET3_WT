@@ -1,0 +1,176 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #ig-phone {
+      width: 540px;
+      height: 960px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #ig-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #ig-push-overlay {
+      position: absolute;
+      top: 60px;
+      left: 24px;
+      right: 24px;
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      padding: 16px 20px;
+      z-index: 20;
+    }
+    #ig-push-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #ig-push-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #002A8D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #ig-push-icon svg { width: 18px; height: 18px; }
+    #ig-push-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #002A8D;
+    }
+    #ig-push-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+    #ig-code-boxes {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .ig-box {
+      width: 56px;
+      height: 64px;
+      border: 2.5px solid #002A8D;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #F37021;
+      background: #F8FAFF;
+    }
+    .ig-box-filled {
+      background: #EEF2FA;
+      border-color: #0063BD;
+    }
+    #ig-verify-btn {
+      width: 100%;
+      padding: 12px 0;
+      background: #0063BD;
+      color: #FFF;
+      border: none;
+      border-radius: 24px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      text-align: center;
+    }
+    #ig-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #002A8D;
+      white-space: nowrap;
+    }
+    #ig-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(0,42,141,0.06);
+    }
+  </style>
+  <div id="root" data-composition-id="ingreso" data-width="1920" data-height="1080">
+    <div id="ig-step-num" class="clip" data-start="0" data-duration="4">05</div>
+    <div id="ig-phone" class="clip" data-start="0" data-duration="4" data-layout-ignore>
+      <div id="ig-notch"></div>
+      <div id="ig-push-overlay">
+        <div id="ig-push-header">
+          <div id="ig-push-icon">
+            <svg viewBox="0 0 18 18" fill="none">
+              <polygon points="9,1 12,9 9,7 6,9" fill="#FFF"/>
+              <polygon points="9,17 6,9 9,11 12,9" fill="#F37021"/>
+            </svg>
+          </div>
+          <span id="ig-push-title">BCP</span>
+        </div>
+        <div id="ig-push-body">Ingresa tu Código Confianza</div>
+        <div id="ig-code-boxes">
+          <div class="ig-box" id="ig-box1"></div>
+          <div class="ig-box" id="ig-box2"></div>
+          <div class="ig-box" id="ig-box3"></div>
+          <div class="ig-box" id="ig-box4"></div>
+        </div>
+        <div id="ig-verify-btn">Verificar</div>
+      </div>
+    </div>
+    <div id="ig-step-label" class="clip" data-start="0.5" data-duration="3.5">Rosa ingresa el código sin salir de la llamada</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ig-phone", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#ig-push-overlay", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 0.2);
+    tl.set("#ig-box1", { innerText: "1", className: "ig-box ig-box-filled" }, 0.8);
+    tl.fromTo("#ig-box1", { scale: 1.15 }, { scale: 1, duration: 0.12, ease: "power2.out" }, 0.8);
+    tl.set("#ig-box2", { innerText: "2", className: "ig-box ig-box-filled" }, 1.2);
+    tl.fromTo("#ig-box2", { scale: 1.15 }, { scale: 1, duration: 0.12, ease: "power2.out" }, 1.2);
+    tl.set("#ig-box3", { innerText: "3", className: "ig-box ig-box-filled" }, 1.6);
+    tl.fromTo("#ig-box3", { scale: 1.15 }, { scale: 1, duration: 0.12, ease: "power2.out" }, 1.6);
+    tl.set("#ig-box4", { innerText: "4", className: "ig-box ig-box-filled" }, 2.0);
+    tl.fromTo("#ig-box4", { scale: 1.15 }, { scale: 1, duration: 0.12, ease: "power2.out" }, 2.0);
+    tl.to("#ig-verify-btn", { scale: 1.04, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 2.5);
+    tl.fromTo("#ig-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.fromTo("#ig-step-num", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+    tl.to("#ig-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#ig-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.5);
+    window.__timelines["ingreso"] = tl;
+  </script>
+</template>

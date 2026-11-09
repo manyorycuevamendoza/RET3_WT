@@ -1,0 +1,182 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #pp-phone {
+      width: 540px;
+      height: 960px;
+      background: #FFFFFF;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    #pp-notch {
+      width: 160px;
+      height: 28px;
+      background: #000;
+      border-radius: 0 0 20px 20px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #pp-statusbar {
+      height: 48px;
+      background: #FAFAFA;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #333;
+    }
+    #pp-screen {
+      padding: 60px 24px 24px;
+      height: 100%;
+    }
+    #pp-notification {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      padding: 16px;
+      margin-top: 20px;
+      position: relative;
+    }
+    #pp-notif-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    #pp-bcp-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #002A8D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #pp-bcp-icon svg { width: 20px; height: 20px; }
+    #pp-notif-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #002A8D;
+    }
+    #pp-notif-time {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #999;
+      margin-left: auto;
+    }
+    #pp-notif-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    #pp-buttons {
+      display: flex;
+      gap: 8px;
+    }
+    .pp-btn {
+      flex: 1;
+      padding: 10px 0;
+      border-radius: 20px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-align: center;
+      border: none;
+    }
+    #pp-btn-ahora {
+      background: #0063BD;
+      color: #FFF;
+    }
+    #pp-btn-tarde {
+      background: #E8EEF5;
+      color: #002A8D;
+    }
+    #pp-btn-no {
+      background: #F0F0F0;
+      color: #666;
+    }
+    #pp-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #002A8D;
+      white-space: nowrap;
+    }
+    #pp-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(0,42,141,0.06);
+    }
+  </style>
+  <div id="root" data-composition-id="push-permiso" data-width="1920" data-height="1080">
+    <div id="pp-step-num" class="clip" data-start="0" data-duration="4">01</div>
+    <div id="pp-phone" class="clip" data-start="0" data-duration="4" data-layout-ignore>
+      <div id="pp-notch"></div>
+      <div id="pp-screen">
+        <div id="pp-statusbar">
+          <span>9:41</span>
+          <span>📶 🔋</span>
+        </div>
+        <div id="pp-notification">
+          <div id="pp-notif-header">
+            <div id="pp-bcp-icon">
+              <svg viewBox="0 0 20 20" fill="none">
+                <polygon points="10,2 14,10 10,8 6,10" fill="#FFFFFF"/>
+                <polygon points="10,18 6,10 10,12 14,10" fill="#F37021"/>
+              </svg>
+            </div>
+            <span id="pp-notif-title">BCP</span>
+            <span id="pp-notif-time">ahora</span>
+          </div>
+          <div id="pp-notif-body">Queremos contactarte por un <strong>crédito preaprobado</strong>. Te llamaremos en los próximos 5 min.</div>
+          <div id="pp-buttons">
+            <div class="pp-btn" id="pp-btn-ahora">Ahora</div>
+            <div class="pp-btn" id="pp-btn-tarde">Más tarde</div>
+            <div class="pp-btn" id="pp-btn-no">No me interesa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="pp-step-label" class="clip" data-start="0.5" data-duration="3.5">El banco pide permiso antes de llamar</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pp-phone", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#pp-notification", { y: -80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, 0.3);
+    tl.fromTo("#pp-btn-ahora", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "expo.out" }, 0.8);
+    tl.fromTo("#pp-btn-tarde", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "expo.out" }, 0.9);
+    tl.fromTo("#pp-btn-no", { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "expo.out" }, 1.0);
+    tl.fromTo("#pp-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.fromTo("#pp-step-num", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0);
+    tl.to("#pp-btn-ahora", { scale: 1.05, duration: 0.15, ease: "power2.out", yoyo: true, repeat: 1 }, 2.5);
+    tl.to("#pp-phone", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#pp-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.5);
+    window.__timelines["push-permiso"] = tl;
+  </script>
+</template>

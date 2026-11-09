@@ -1,0 +1,52 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #002A8D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    #hook-stat {
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 280px;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    #hook-label {
+      color: rgba(255,255,255,0.85);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 48px;
+      margin-top: 24px;
+      letter-spacing: -0.01em;
+    }
+    #hook-sublabel {
+      color: #F37021;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      margin-top: 16px;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hook-stat" class="clip" data-start="0" data-duration="4">55%</div>
+    <div id="hook-label" class="clip" data-start="0.4" data-duration="3.6">ya no contesta llamadas de desconocidos</div>
+    <div id="hook-sublabel" class="clip" data-start="0.8" data-duration="3.2">Perú: 2do país del mundo en spam telefónico</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#hook-stat", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#hook-label", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 0.4);
+    tl.fromTo("#hook-sublabel", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "expo.out" }, 0.8);
+    tl.to("#hook-stat", { scale: 0.85, opacity: 0, filter: "blur(12px)", duration: 0.35, ease: "power3.in" }, 3.2);
+    tl.to("#hook-label", { opacity: 0, filter: "blur(8px)", duration: 0.25, ease: "power3.in" }, 3.3);
+    tl.to("#hook-sublabel", { opacity: 0, duration: 0.2, ease: "power3.in" }, 3.4);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

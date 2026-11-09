@@ -1,0 +1,193 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #F5F5F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 80px;
+      overflow: hidden;
+    }
+    #cv-advisor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    #cv-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: #002A8D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #cv-avatar svg { width: 80px; height: 80px; }
+    #cv-advisor-name {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: #002A8D;
+    }
+    #cv-advisor-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: #71789D;
+    }
+    #cv-speech {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 32px 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      max-width: 480px;
+      position: relative;
+    }
+    #cv-speech::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 40px;
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-right: 16px solid #FFFFFF;
+    }
+    #cv-speech-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      color: #333;
+      line-height: 1.5;
+    }
+    #cv-code-display {
+      display: flex;
+      gap: 16px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .cv-digit {
+      width: 72px;
+      height: 88px;
+      background: #002A8D;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #F37021;
+    }
+    #cv-phone-mini {
+      width: 320px;
+      height: 580px;
+      background: #1a1a2e;
+      border-radius: 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    #cv-phone-notch {
+      width: 100px;
+      height: 22px;
+      background: #000;
+      border-radius: 0 0 14px 14px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #cv-call-active {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #4CAF50;
+      font-weight: 600;
+    }
+    #cv-call-timer {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+    }
+    #cv-call-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      color: #FFF;
+      font-weight: 600;
+    }
+    #cv-step-label {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #002A8D;
+      white-space: nowrap;
+    }
+    #cv-step-num {
+      position: absolute;
+      top: 60px;
+      right: 120px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(0,42,141,0.06);
+    }
+  </style>
+  <div id="root" data-composition-id="codigo-voz" data-width="1920" data-height="1080">
+    <div id="cv-step-num" class="clip" data-start="0" data-duration="5">03</div>
+    <div id="cv-advisor" class="clip" data-start="0" data-duration="5" data-layout-ignore>
+      <div id="cv-avatar">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="28" r="16" fill="rgba(255,255,255,0.9)"/>
+          <ellipse cx="40" cy="65" rx="24" ry="16" fill="rgba(255,255,255,0.9)"/>
+          <path d="M58 24c4 0 6 4 6 8s-2 8-6 8" stroke="#F37021" stroke-width="3" fill="none"/>
+          <path d="M62 20c2-2 6 0 6 4v12c0 4-4 6-6 4" stroke="#F37021" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <div id="cv-advisor-name">Carlos Mendoza</div>
+      <div id="cv-advisor-role">Asesor BCP</div>
+      <div id="cv-speech">
+        <div id="cv-speech-text">"Hola Rosa, soy Carlos del BCP. Tu Código Confianza es:"</div>
+        <div id="cv-code-display">
+          <div class="cv-digit" id="cv-d1">1</div>
+          <div class="cv-digit" id="cv-d2">2</div>
+          <div class="cv-digit" id="cv-d3">3</div>
+          <div class="cv-digit" id="cv-d4">4</div>
+        </div>
+      </div>
+    </div>
+    <div id="cv-phone-mini" class="clip" data-start="0" data-duration="5" data-layout-ignore>
+      <div id="cv-phone-notch"></div>
+      <div id="cv-call-active">Llamada activa</div>
+      <div id="cv-call-number">+51 987 654 321</div>
+      <div id="cv-call-timer">00:12</div>
+    </div>
+    <div id="cv-step-label" class="clip" data-start="0.5" data-duration="4.5">El asesor dice el Código Confianza</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cv-advisor", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#cv-phone-mini", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 0.1);
+    tl.fromTo("#cv-speech", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.4);
+    tl.fromTo("#cv-speech-text", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.5);
+    tl.fromTo("#cv-d1", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(1.4)" }, 1.5);
+    tl.fromTo("#cv-d2", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(1.4)" }, 1.7);
+    tl.fromTo("#cv-d3", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(1.4)" }, 1.9);
+    tl.fromTo("#cv-d4", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "back.out(1.4)" }, 2.1);
+    tl.fromTo("#cv-step-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.to("#cv-advisor", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 4.4);
+    tl.to("#cv-phone-mini", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power3.in" }, 4.4);
+    tl.to("#cv-step-label", { opacity: 0, duration: 0.2, ease: "power3.in" }, 4.5);
+    window.__timelines["codigo-voz"] = tl;
+  </script>
+</template>
