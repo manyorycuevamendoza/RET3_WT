@@ -237,16 +237,6 @@ function correctCallCode() {
   showScreen('screen-code-entry');
 }
 
-function endUnverifiedCall() {
-  clearInterval(callTimerInterval);
-  callTimerInterval = null;
-  isProcessing = false;
-  document.getElementById('return-to-app').hidden = true;
-  vibrate(30);
-  showScreen('screen-call-ended');
-  document.getElementById('call-ended-title').focus();
-}
-
 function resetDemo() {
   clearSceneActions();
   document.getElementById('return-to-app').hidden = true;
