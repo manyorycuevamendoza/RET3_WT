@@ -33,6 +33,17 @@ function showScreen(id) {
   currentScreen = id;
 }
 
+function navigateWithinBCP(id) {
+  const destinations = {
+    'screen-bcp-home': 'Abriendo el inicio de BCP',
+    'screen-code-entry': 'Abriendo Código Confianza',
+  };
+  if (!destinations[id] || currentScreen === id || currentScreen === 'screen-app-transition') return;
+  document.getElementById('app-transition-label').textContent = destinations[id];
+  showScreen('screen-app-transition');
+  schedule(() => showScreen(id), 1000);
+}
+
 function startDemo() {
   resetDemo();
   updateClock();
@@ -174,7 +185,7 @@ function openCodigoConfianza() {
 
   if (boxes[0]) boxes[0].classList.add('focused');
 
-  showScreen('screen-code-entry');
+  navigateWithinBCP('screen-code-entry');
 }
 
 function pressKey(digit) {

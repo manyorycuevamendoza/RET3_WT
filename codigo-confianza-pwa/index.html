@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20">
+  <link rel="stylesheet" href="styles.css?v=21">
   <title>Código Confianza - BCP</title>
 </head>
 <body>
@@ -296,11 +296,11 @@
         <button type="button" class="in-call-bar" onclick="showScreen('screen-active-call')" aria-label="Volver a la llamada en curso"><span>Llamada en curso</span><span class="in-call-return">Volver a la llamada ›</span></button>
         <!-- Header -->
         <div class="code-header">
-          <button class="code-header-btn" onclick="showScreen('screen-bcp-home')">
+          <button class="code-header-btn" onclick="navigateWithinBCP('screen-bcp-home')">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="15,18 9,12 15,6"/></svg>
           </button>
           <span class="code-header-title">Código Confianza</span>
-          <button class="code-header-btn" onclick="showScreen('screen-bcp-home')">
+          <button class="code-header-btn" onclick="navigateWithinBCP('screen-bcp-home')">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
@@ -403,12 +403,19 @@
       </div>
     </div>
 
+    <div class="screen" id="screen-app-transition">
+      <div class="app-transition-content" role="status" aria-live="polite">
+        <img src="assets/bcp-app.webp" alt="BCP" width="112" height="112">
+        <span class="sr-only" id="app-transition-label">Abriendo BCP</span>
+      </div>
+    </div>
+
     <!-- ============ TOAST ============ -->
     <div class="toast" id="toast"></div>
 
   </div>
 
-  <script src="app.js?v=20"></script>
+  <script src="app.js?v=21"></script>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
